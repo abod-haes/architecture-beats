@@ -28,18 +28,18 @@ export const metadata: Metadata = {
     title: siteData.seo.defaultTitle,
     description: siteData.seo.description,
     url: siteData.seo.siteUrl,
-    images: [{ url: "/opengraph-image.png", width: 1536, height: 1024, alt: siteData.company.nameEn }],
+    images: [{ url: "/opengraph-image.jpg", width: 1200, height: 630, alt: siteData.company.nameEn }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteData.seo.defaultTitle,
     description: siteData.seo.description,
-    images: ["/twitter-image.png"],
+    images: ["/twitter-image.jpg"],
   },
   icons: {
-    icon: "/icon.png",
-    apple: "/apple-icon.png",
-    shortcut: "/icon.png",
+    icon: "/icon-512.png",
+    apple: "/apple-icon-180.png",
+    shortcut: "/icon-512.png",
   },
   robots: {
     index: true,
