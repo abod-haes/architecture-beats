@@ -171,6 +171,7 @@ export const siteData = {
     },
   ] as FaqItem[],
   seo: {
+    siteUrl: "https://architecture-beats.vercel.app",
     defaultTitle: "Architecture Beats | أركيتكتشر بيتس",
     titleTemplate: "%s | Architecture Beats",
     description:

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import ContactSection from "@/components/sections/ContactSection";
 import { siteData } from "@/data/siteData";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `${siteData.nav[4].label} | ${siteData.company.nameEn}`,
-  description: siteData.hero.description,
-};
+export const metadata: Metadata = buildPageMetadata(siteData.nav[4].label, siteData.hero.description, "/contact");
 
 export default function ContactPage() {
   return (

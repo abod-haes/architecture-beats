@@ -4,11 +4,9 @@ import ProcessSection from "@/components/sections/ProcessSection";
 import StatsSection from "@/components/sections/StatsSection";
 import WhyUsSection from "@/components/sections/WhyUsSection";
 import { siteData } from "@/data/siteData";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `${siteData.nav[1].label} | ${siteData.company.nameEn}`,
-  description: siteData.about.intro,
-};
+export const metadata: Metadata = buildPageMetadata(siteData.nav[1].label, siteData.about.intro, "/about");
 
 export default function AboutPage() {
   return (

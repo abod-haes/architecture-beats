@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 import ServicesSection from "@/components/sections/ServicesSection";
 import CTASection from "@/components/sections/CTASection";
 import { siteData } from "@/data/siteData";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `${siteData.nav[2].label} | ${siteData.company.nameEn}`,
-  description: siteData.hero.description,
-};
+export const metadata: Metadata = buildPageMetadata(siteData.nav[2].label, siteData.hero.description, "/services");
 
 export default function ServicesPage() {
   return (
