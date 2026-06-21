@@ -14,7 +14,7 @@ export default function AnimatedContainer({ children, className }: Props) {
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: false, margin: "-90px", amount: 0.22 }}
       variants={fadeUp}
       className={className}
     >
