@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ServiceItem } from "@/data/siteData";
 import type { ComponentType } from "react";
+import { fadeUp } from "@/lib/motion";
 
 type Props = {
   item: ServiceItem;
@@ -13,13 +14,14 @@ export default function ServiceCard({ item }: Props) {
 
   return (
     <motion.article
-      whileHover={{ y: -8, scale: 1.01 }}
-      className="group relative overflow-hidden border border-brand-primary/20 bg-zinc-900/60 p-6"
+      variants={fadeUp}
+      whileHover={{ y: -8, scale: 1.015 }}
+      className="group relative overflow-hidden border border-brand-dark/15 bg-white/85 p-6 transition-colors hover:border-brand-primary/70"
     >
-      <div className="absolute inset-0 bg-[linear-gradient(140deg,rgba(166,214,50,0.16),transparent_55%)] opacity-0 transition-opacity group-hover:opacity-100" />
-      <Icon className="relative mb-4 h-8 w-8 text-brand-primary" />
-      <h3 className="relative mb-3 text-xl font-bold text-white">{item.title}</h3>
-      <p className="relative leading-7 text-zinc-300">{item.description}</p>
+      <div className="absolute inset-x-0 top-0 h-1 bg-brand-primary transition-all duration-500 group-hover:h-2" />
+      <Icon className="relative mb-4 h-8 w-8 text-brand-secondary" />
+      <h3 className="relative mb-3 text-xl font-black text-brand-dark">{item.title}</h3>
+      <p className="relative leading-7 text-brand-gray">{item.description}</p>
     </motion.article>
   );
 }
