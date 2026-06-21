@@ -1,35 +1,41 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { siteData } from "@/data/siteData";
+import { useSiteContent } from "@/context/LocaleContext";
 import SectionTitle from "../ui/SectionTitle";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 export default function AboutSection() {
+  const content = useSiteContent();
+
   return (
     <section className="mx-auto grid w-[92%] max-w-7xl gap-10 py-20 md:grid-cols-2">
-      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-        <SectionTitle title={siteData.nav[1].label} description={siteData.about.intro} />
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.22 }} variants={staggerContainer}>
+        <SectionTitle title={content.nav[1].label} description={content.about.intro} eyebrow="About" />
         <div className="mt-8 space-y-6">
-          {siteData.about.timeline.map((item) => (
-            <motion.div key={item.year} variants={fadeUp} className="border-s-2 border-brand-primary/45 ps-4">
-              <p className="text-sm text-brand-primary">{item.year}</p>
-              <h3 className="text-xl font-bold text-white">{item.title}</h3>
-              <p className="text-zinc-300">{item.description}</p>
+          {content.about.timeline.map((item) => (
+            <motion.div key={item.year} variants={fadeUp} className="border-s-2 border-brand-primary ps-4">
+              <p className="text-sm font-black text-brand-secondary">{item.year}</p>
+              <h3 className="text-xl font-black text-brand-dark">{item.title}</h3>
+              <p className="text-brand-gray">{item.description}</p>
             </motion.div>
           ))}
         </div>
       </motion.div>
       <motion.div
-        initial={{ opacity: 0, scale: 0.96 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="relative min-h-96 overflow-hidden border border-brand-primary/30 bg-zinc-900"
+        initial={{ opacity: 0, scale: 0.94, rotate: 1 }}
+        whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+        viewport={{ once: false, amount: 0.35 }}
+        transition={{ duration: 0.7 }}
+        className="relative min-h-96 overflow-hidden border border-brand-dark/15 bg-white/75"
       >
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(166,214,50,0.28),transparent_40%),linear-gradient(310deg,rgba(125,167,22,0.22),transparent_60%)]" />
-        <div className="absolute inset-10 border border-zinc-600/80" />
-        <div className="absolute inset-20 border border-brand-primary/60" />
+        <div className="absolute inset-0 blueprint-grid opacity-70" />
+        <div className="absolute inset-8 border border-brand-dark/20" />
+        <div className="absolute inset-16 border border-brand-primary/70" />
+        <div className="absolute bottom-8 right-8 max-w-xs border border-brand-dark/15 bg-[#f5f1e8]/90 p-5">
+          <p className="text-xs font-black uppercase tracking-[0.25em] text-brand-secondary">Design to Delivery</p>
+          <p className="mt-3 text-2xl font-black text-brand-dark">{content.company.nameEn}</p>
+        </div>
       </motion.div>
     </section>
   );
