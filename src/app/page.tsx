@@ -6,6 +6,7 @@ import ProcessSection from "@/components/sections/ProcessSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import StatsSection from "@/components/sections/StatsSection";
+import TeamSection from "@/components/sections/TeamSection";
 import WhyUsSection from "@/components/sections/WhyUsSection";
 import { siteData } from "@/data/siteData";
 
@@ -38,6 +39,7 @@ export default function Home() {
       <ProcessSection />
       <ProjectsSection />
       <StatsSection />
+      <TeamSection />
       <CTASection />
       <ContactSection />
     </>
