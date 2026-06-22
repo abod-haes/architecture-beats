@@ -7,7 +7,7 @@ import { fadeUp, slideIn } from "@/lib/motion";
 
 export default function ContactSection() {
   const content = useSiteContent();
-  const inputClass = "w-full border border-[var(--site-border)] bg-[var(--site-card-solid)] px-4 py-3 text-brand-dark outline-none transition placeholder:text-brand-gray/70 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20";
+  const inputClass = "w-full border border-[var(--site-border)] bg-[var(--site-card-solid)] px-4 py-3 text-brand-dark outline-none transition placeholder:text-brand-gray focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20";
 
   return (
     <section id="contact" className="site-section mx-auto grid w-[92%] max-w-7xl gap-8 py-16 sm:gap-10 sm:py-20 md:grid-cols-2">
