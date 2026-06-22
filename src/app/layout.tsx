@@ -7,6 +7,7 @@ import SmoothScroll from "@/components/layout/SmoothScroll";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import LocaleProvider from "@/context/LocaleContext";
+import ThemeProvider from "@/context/ThemeContext";
 import { siteData } from "@/data/siteData";
 
 const cairo = Cairo({ subsets: ["arabic", "latin"], weight: ["400", "600", "700", "800", "900"] });
@@ -59,16 +60,18 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
-      <body className={`${cairo.className} bg-[#f5f1e8] text-brand-dark antialiased`}>
-        <LocaleProvider>
-          <SmoothScroll>
-            <ScrollProgress />
-            <Navbar />
-            <main>{children}</main>
-            <FloatingWhatsApp />
-            <Footer />
-          </SmoothScroll>
-        </LocaleProvider>
+      <body className={`${cairo.className} bg-[var(--site-bg)] text-[var(--site-text)] antialiased transition-colors duration-300`}>
+        <ThemeProvider>
+          <LocaleProvider>
+            <SmoothScroll>
+              <ScrollProgress />
+              <Navbar />
+              <main>{children}</main>
+              <FloatingWhatsApp />
+              <Footer />
+            </SmoothScroll>
+          </LocaleProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
