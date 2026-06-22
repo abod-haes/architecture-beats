@@ -23,8 +23,11 @@
   --site-shadow: rgba(32, 35, 29, 0.1);
   --nav-bg: rgba(247, 242, 232, 0.91);
   --blueprint-line: rgba(32, 35, 29, 0.08);
-  --cursor-border: rgba(166, 214, 50, 0.85);
-  --cursor-fill: rgba(166, 214, 50, 0.18);
+  --cursor-ring: rgba(32, 35, 29, 0.52);
+  --cursor-ring-active: rgba(111, 148, 21, 0.95);
+  --cursor-active-fill: rgba(166, 214, 50, 0.12);
+  --cursor-dot: #6f9415;
+  --cursor-shadow: rgba(111, 148, 21, 0.26);
 }
 
 :root[data-theme="dark"] {
@@ -49,8 +52,11 @@
   --site-shadow: rgba(0, 0, 0, 0.34);
   --nav-bg: rgba(14, 16, 12, 0.91);
   --blueprint-line: rgba(166, 214, 50, 0.12);
-  --cursor-border: rgba(166, 214, 50, 0.95);
-  --cursor-fill: rgba(166, 214, 50, 0.22);
+  --cursor-ring: rgba(247, 241, 231, 0.55);
+  --cursor-ring-active: rgba(194, 238, 69, 0.98);
+  --cursor-active-fill: rgba(166, 214, 50, 0.09);
+  --cursor-dot: #c2ee45;
+  --cursor-shadow: rgba(166, 214, 50, 0.28);
 }
 
 @theme inline {
@@ -138,11 +144,11 @@ body {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .blueprint-drift {
+  .animate-blueprint-drift {
     animation: blueprint-drift 18s ease-in-out infinite;
   }
 
-  .site-float {
+  .animate-site-float {
     animation: site-float 7s ease-in-out infinite;
   }
 }
