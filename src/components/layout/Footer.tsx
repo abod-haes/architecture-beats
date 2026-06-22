@@ -7,7 +7,7 @@ export default function Footer() {
   const content = useSiteContent();
 
   return (
-    <footer className="border-t border-brand-dark/10 bg-brand-dark text-white">
+    <footer className="border-t border-[var(--site-border)] bg-[var(--site-inverse)] text-[var(--site-inverse-text)]">
       <div className="mx-auto grid w-[92%] max-w-7xl gap-8 py-14 md:grid-cols-4">
         <div>
           <div className="flex items-center">
@@ -18,16 +18,16 @@ export default function Footer() {
               loading="lazy"
             />
           </div>
-          <p className="mt-5 max-w-xs leading-7 text-white/70">{content.hero.description}</p>
+          <p className="mt-5 max-w-xs leading-7 opacity-70">{content.hero.description}</p>
         </div>
         <div>
-          <h3 className="mb-4 font-black text-white">
+          <h3 className="mb-4 font-black">
             {content.footer.quickLinksTitle}
           </h3>
-          <ul className="space-y-2 text-white/70">
+          <ul className="space-y-2 opacity-75">
             {content.nav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="hover:text-brand-primary">
+                <Link href={item.href} className="transition hover:text-brand-primary">
                   {item.label}
                 </Link>
               </li>
@@ -35,32 +35,32 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h3 className="mb-4 font-black text-white">
+          <h3 className="mb-4 font-black">
             {content.footer.servicesTitle}
           </h3>
-          <ul className="space-y-2 text-white/70">
+          <ul className="space-y-2 opacity-75">
             {content.services.slice(0, 4).map((item) => (
               <li key={item.title}>{item.title}</li>
             ))}
           </ul>
         </div>
         <div>
-          <h3 className="mb-4 font-black text-white">
+          <h3 className="mb-4 font-black">
             {content.footer.contactTitle}
           </h3>
-          <ul className="space-y-2 text-white/70">
+          <ul className="space-y-2 opacity-75">
             <li dir="ltr" className="text-left">
               {content.company.phone}
             </li>
             <li dir="ltr" className="text-left">
               {content.company.mobile}
             </li>
-            <li>{content.company.email}</li>
+            <li className="break-words">{content.company.email}</li>
             <li>{content.company.address}</li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/10 py-4 text-center text-sm text-white/55">
+      <div className="border-t border-current/10 py-4 text-center text-sm opacity-60">
         {content.footer.rights} © {new Date().getFullYear()} {content.company.nameEn}
       </div>
     </footer>
