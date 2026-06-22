@@ -15,9 +15,10 @@ export default function Hero() {
   const cardRotate = useTransform(scrollYProgress, [0, 0.22], [0, -3]);
 
   return (
-    <section className="site-section relative min-h-[92vh] overflow-hidden bg-[var(--site-bg)] pt-32 sm:pt-36" dir={dir}>
+    <section className="site-section section-hero relative min-h-[92vh] overflow-hidden pt-32 sm:pt-36" dir={dir}>
       <motion.div style={{ y: blueprintY }} className="blueprint-grid blueprint-drift absolute inset-0 -z-10 opacity-90" />
-      <motion.div style={{ rotate: cardRotate }} className="site-float absolute -right-24 top-24 -z-10 h-72 w-72 border border-[var(--site-border)] bg-[var(--site-card)] sm:h-80 sm:w-80" />
+      <div className="absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-brand-primary/16 to-transparent" />
+      <motion.div style={{ rotate: cardRotate }} className="site-float absolute -right-24 top-24 -z-10 h-72 w-72 border border-[var(--site-border-strong)] bg-[var(--site-accent-soft)] sm:h-80 sm:w-80" />
       <motion.div style={{ y: heroY }} className="site-float absolute -left-16 bottom-10 -z-10 h-52 w-52 border border-brand-primary/45 bg-brand-primary/10 [animation-delay:1.4s] sm:h-56 sm:w-56" />
 
       <motion.div
@@ -34,6 +35,7 @@ export default function Hero() {
           <motion.h1 variants={fadeUp} className="max-w-5xl text-4xl font-black leading-[1.12] text-brand-dark sm:text-5xl md:text-6xl">
             {content.hero.title}
           </motion.h1>
+          <motion.div variants={fadeUp} className="brand-accent-line mt-5 h-px w-44" />
           <motion.p variants={fadeUp} className="mt-6 max-w-3xl text-base leading-8 text-brand-gray sm:mt-7 sm:text-lg sm:leading-9">
             {content.hero.description}
           </motion.p>
@@ -48,19 +50,18 @@ export default function Hero() {
           <motion.div
             animate={{ y: [0, -10, 0], rotate: [0, 0.7, 0] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="relative overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)]"
+            className="brand-media-frame relative"
           >
             <img
               src="/hero-construction.svg"
               alt={content.hero.title}
               className="h-[360px] w-full object-cover sm:h-[460px] lg:h-[540px]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[var(--site-inverse)] via-transparent to-transparent opacity-70" />
-            <div className="absolute start-4 top-4 flex items-center gap-3 border border-[var(--site-inverse-border)] bg-[var(--site-inverse)] px-4 py-3 text-[var(--site-inverse-text)] backdrop-blur sm:start-6 sm:top-6">
+            <div className="absolute start-4 top-4 z-10 flex items-center gap-3 border border-[var(--site-inverse-border)] bg-[var(--site-inverse)] px-4 py-3 text-[var(--site-inverse-text)] backdrop-blur sm:start-6 sm:top-6">
               <DraftingCompass className="h-6 w-6 text-brand-primary" />
               <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-primary sm:text-sm">{content.company.nameEn}</p>
             </div>
-            <div className="absolute inset-x-3 bottom-3 grid gap-3 sm:inset-x-5 sm:bottom-5 sm:grid-cols-4">
+            <div className="absolute inset-x-3 bottom-3 z-10 grid gap-3 sm:inset-x-5 sm:bottom-5 sm:grid-cols-4">
               {content.stats.slice(0, 4).map((stat, index) => (
                 <motion.div
                   key={stat.label}
