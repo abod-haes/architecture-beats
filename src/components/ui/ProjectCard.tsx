@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Ruler } from "lucide-react";
+import { ArrowUpRight, Calendar, MapPin, Ruler } from "lucide-react";
 import { ProjectItem } from "@/data/siteData";
 import { fadeUp } from "@/lib/motion";
 
@@ -18,71 +19,70 @@ type ProjectLabels = {
 type Props = {
   project: ProjectItem;
   labels: ProjectLabels;
+  slug: string;
+  detailsLabel: string;
 };
 
-export default function ProjectCard({ project, labels }: Props) {
+export default function ProjectCard({ project, labels, slug, detailsLabel }: Props) {
+  const shortDescription = project.description.length > 118 ? `${project.description.slice(0, 118)}...` : project.description;
+  const featuredScope = project.scope.slice(0, 2);
+
   return (
     <motion.article
       variants={fadeUp}
-      whileHover={{ y: -8, scale: 1.01 }}
+      whileHover={{ y: -6, scale: 1.01 }}
       whileTap={{ scale: 0.99 }}
       data-cursor="active"
-      className="group overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)] shadow-[0_18px_44px_rgba(35,35,35,0.07)] backdrop-blur transition hover:border-brand-primary/70 dark:shadow-[0_18px_44px_rgba(0,0,0,0.28)]"
+      className="group flex h-full flex-col overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)] shadow-[0_16px_40px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary/70"
     >
-      <div className="relative overflow-hidden border-b border-[var(--site-border)]">
-        <Image src={project.image} alt={project.title} width={1200} height={900} className="h-56 w-full object-cover transition duration-700 group-hover:scale-105 sm:h-64" />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/65 via-zinc-950/10 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 px-4 py-3 text-white">
-          <p className="text-sm font-black text-brand-primary">{project.category}</p>
-          <p className="border border-white/20 bg-zinc-950/35 px-3 py-1 text-xs font-bold backdrop-blur">{project.status}</p>
+      <Link href={`/projects/${slug}`} className="relative block overflow-hidden border-b border-[var(--site-border)]" aria-label={project.title}>
+        <Image src={project.image} alt={project.title} width={900} height={620} className="h-44 w-full object-cover transition duration-700 group-hover:scale-105 sm:h-48" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/12 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 text-white">
+          <p className="max-w-[65%] text-xs font-black uppercase tracking-[0.16em] text-brand-primary">{project.category}</p>
+          <p className="border border-white/20 bg-black/35 px-2.5 py-1 text-[0.68rem] font-black backdrop-blur">{project.status}</p>
         </div>
-      </div>
+      </Link>
 
-      <div className="space-y-5 p-4 sm:p-5">
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
         <div>
-          <h3 className="text-2xl font-black text-brand-dark">{project.title}</h3>
-          <p className="mt-3 leading-7 text-brand-gray">{project.description}</p>
+          <h3 className="text-xl font-black leading-snug text-brand-dark sm:text-2xl">{project.title}</h3>
+          <p className="mt-2 text-sm leading-6 text-brand-gray">{shortDescription}</p>
         </div>
 
-        <div className="grid gap-3 text-sm sm:grid-cols-3">
-          <div className="border border-[var(--site-border)] bg-[var(--site-muted)] p-3">
-            <MapPin className="mb-2 h-4 w-4 text-brand-secondary" />
+        <div className="mt-4 grid grid-cols-3 gap-2 text-xs">
+          <div className="border border-[var(--site-border)] bg-[var(--site-muted)] p-2.5">
+            <MapPin className="mb-2 h-3.5 w-3.5 text-brand-secondary" />
             <p className="font-black text-brand-dark">{labels.location}</p>
-            <p className="text-brand-gray">{project.location}</p>
+            <p className="mt-1 text-brand-gray">{project.location}</p>
           </div>
-          <div className="border border-[var(--site-border)] bg-[var(--site-muted)] p-3">
-            <Ruler className="mb-2 h-4 w-4 text-brand-secondary" />
+          <div className="border border-[var(--site-border)] bg-[var(--site-muted)] p-2.5">
+            <Ruler className="mb-2 h-3.5 w-3.5 text-brand-secondary" />
             <p className="font-black text-brand-dark">{labels.area}</p>
-            <p className="text-brand-gray">{project.area}</p>
+            <p className="mt-1 text-brand-gray">{project.area}</p>
           </div>
-          <div className="border border-[var(--site-border)] bg-[var(--site-muted)] p-3">
-            <Calendar className="mb-2 h-4 w-4 text-brand-secondary" />
+          <div className="border border-[var(--site-border)] bg-[var(--site-muted)] p-2.5">
+            <Calendar className="mb-2 h-3.5 w-3.5 text-brand-secondary" />
             <p className="font-black text-brand-dark">{labels.year}</p>
-            <p className="text-brand-gray">{project.year}</p>
+            <p className="mt-1 text-brand-gray">{project.year}</p>
           </div>
         </div>
 
-        <div>
-          <p className="mb-2 text-sm font-black text-brand-dark">{labels.scope}</p>
-          <div className="flex flex-wrap gap-2">
-            {project.scope.map((item) => (
-              <span key={item} className="border border-brand-primary/45 bg-brand-primary/12 px-3 py-1 text-xs font-bold text-brand-dark">
-                {item}
-              </span>
-            ))}
-          </div>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {featuredScope.map((item) => (
+            <span key={item} className="border border-brand-primary/45 bg-[var(--site-accent-soft)] px-2.5 py-1 text-xs font-bold text-brand-dark">
+              {item}
+            </span>
+          ))}
         </div>
 
-        <div>
-          <p className="mb-2 text-sm font-black text-brand-dark">{labels.highlights}</p>
-          <ul className="space-y-2 text-sm leading-6 text-brand-gray">
-            {project.highlights.map((item) => (
-              <li key={item} className="border-s-2 border-brand-primary bg-[var(--site-muted)] px-3 py-2">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <Link
+          href={`/projects/${slug}`}
+          className="mt-5 inline-flex items-center justify-between gap-3 border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-3 text-sm font-black text-brand-dark transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323]"
+        >
+          {detailsLabel}
+          <ArrowUpRight className="h-4 w-4" />
+        </Link>
       </div>
     </motion.article>
   );
