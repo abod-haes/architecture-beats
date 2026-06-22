@@ -6,6 +6,8 @@ import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 import ScrollProgress from "@/components/layout/ScrollProgress";
+import CursorFollower from "@/components/layout/CursorFollower";
+import MobileActionBar from "@/components/layout/MobileActionBar";
 import LocaleProvider from "@/context/LocaleContext";
 import ThemeProvider from "@/context/ThemeContext";
 import { siteData } from "@/data/siteData";
@@ -60,14 +62,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
-      <body className={`${cairo.className} bg-[var(--site-bg)] text-[var(--site-text)] antialiased transition-colors duration-300`}>
+      <body className={`${cairo.className} cursor-reactive mobile-safe-bottom bg-[var(--site-bg)] text-[var(--site-text)] antialiased transition-colors duration-300`}>
         <ThemeProvider>
           <LocaleProvider>
             <SmoothScroll>
               <ScrollProgress />
+              <CursorFollower />
               <Navbar />
               <main>{children}</main>
               <FloatingWhatsApp />
+              <MobileActionBar />
               <Footer />
             </SmoothScroll>
           </LocaleProvider>
