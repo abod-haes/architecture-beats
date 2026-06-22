@@ -44,14 +44,15 @@ function StatCard({ label, value, suffix, description }: { label: string; value:
       variants={fadeUp}
       whileHover={{ y: -6, scale: 1.02 }}
       data-cursor="active"
-      className="border border-[var(--site-border)] bg-[var(--site-card)] p-5 shadow-[0_14px_34px_rgba(35,35,35,0.06)] backdrop-blur sm:p-6 dark:shadow-[0_14px_34px_rgba(0,0,0,0.24)]"
+      className="group relative overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)] p-5 shadow-[0_14px_34px_var(--site-shadow)] backdrop-blur sm:p-6"
     >
-      <p className="text-4xl font-black text-brand-dark">
+      <div className="pointer-events-none absolute -end-12 -top-12 h-28 w-28 rounded-full bg-[var(--site-accent-soft)] blur-2xl transition group-hover:bg-[var(--site-accent-strong)]" />
+      <p className="relative text-4xl font-black text-brand-dark">
         {count.toLocaleString()}
         <span className="text-brand-secondary">{suffix}</span>
       </p>
-      <p className="mt-2 font-black text-brand-dark">{label}</p>
-      <p className="mt-2 text-sm leading-6 text-brand-gray">{description}</p>
+      <p className="relative mt-2 font-black text-brand-dark">{label}</p>
+      <p className="relative mt-2 text-sm leading-6 text-brand-gray">{description}</p>
     </motion.article>
   );
 }
@@ -60,7 +61,8 @@ export default function StatsSection() {
   const content = useSiteContent();
 
   return (
-    <section className="site-section border-y border-[var(--site-border)] bg-[var(--site-muted)] py-16">
+    <section className="site-section section-accent py-16">
+      <div className="blueprint-grid absolute inset-0 -z-10 opacity-35" />
       <div className="mx-auto w-[92%] max-w-7xl">
         <SectionTitle title={content.texts.statsTitle} description={content.texts.statsDescription} eyebrow="Stats" />
         <motion.div
