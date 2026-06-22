@@ -27,11 +27,12 @@ export default function ProcessSection() {
               variants={fadeUp}
               whileHover={{ y: -6, rotate: idx % 2 === 0 ? 0.7 : -0.7 }}
               data-cursor="active"
-              className="relative overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)] p-5 backdrop-blur"
+              className="group relative overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)] p-5 pt-10 backdrop-blur transition-colors duration-300 sm:p-6 sm:pt-11"
             >
-              <div className="absolute -top-8 end-4 text-7xl font-black text-brand-primary/10">0{idx + 1}</div>
-              <span className="relative mb-4 inline-block text-sm font-black text-brand-secondary">0{idx + 1}</span>
-              <Icon className="relative mb-3 h-7 w-7 text-brand-secondary" />
+              <div className="pointer-events-none absolute end-4 top-3 text-6xl font-black leading-none text-brand-secondary opacity-10 transition-all duration-500 group-hover:scale-105 group-hover:opacity-20 sm:end-5 sm:top-4 sm:text-7xl">
+                {String(idx + 1).padStart(2, "0")}
+              </div>
+              <Icon className="relative mb-4 h-7 w-7 text-brand-secondary" />
               <h3 className="relative text-lg font-black text-brand-dark">{item.title}</h3>
               <p className="relative mt-2 text-sm leading-7 text-brand-gray">{item.description}</p>
             </motion.article>
