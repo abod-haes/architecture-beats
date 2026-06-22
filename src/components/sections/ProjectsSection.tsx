@@ -2,13 +2,14 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { useSiteContent } from "@/context/LocaleContext";
+import { useLocale } from "@/context/LocaleContext";
+import { projectDetailLabels, projectSlugs } from "@/data/projectDetails";
 import ProjectCard from "../ui/ProjectCard";
 import SectionTitle from "../ui/SectionTitle";
 import { staggerContainer } from "@/lib/motion";
 
 export default function ProjectsSection() {
-  const content = useSiteContent();
+  const { content, locale } = useLocale();
   const ref = useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [60, -60]);
@@ -23,10 +24,16 @@ export default function ProjectsSection() {
           whileInView="visible"
           viewport={{ once: false, amount: 0.12 }}
           variants={staggerContainer}
-          className="mt-8 grid gap-5 sm:mt-10 sm:gap-6 lg:grid-cols-2"
+          className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
         >
-          {content.projects.map((project) => (
-            <ProjectCard key={project.title} project={project} labels={content.texts.projectLabels} />
+          {content.projects.map((project, index) => (
+            <ProjectCard
+              key={project.title}
+              project={project}
+              labels={content.texts.projectLabels}
+              slug={projectSlugs[index]}
+              detailsLabel={projectDetailLabels[locale].detailsCta}
+            />
           ))}
         </motion.div>
       </div>
