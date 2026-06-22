@@ -1,0 +1,32 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#F6F4EE"/>
+  <path d="M0 740L1200 600V900H0V740Z" fill="#232323"/>
+  <path d="M0 705L1200 565" stroke="#A6D632" stroke-width="5"/>
+  <g opacity="0.18" stroke="#232323" stroke-width="1">
+    <path d="M100 0V900M220 0V900M340 0V900M460 0V900M580 0V900M700 0V900M820 0V900M940 0V900M1060 0V900"/>
+    <path d="M0 100H1200M0 220H1200M0 340H1200M0 460H1200M0 580H1200M0 700H1200M0 820H1200"/>
+  </g>
+  <g transform="translate(205 155)">
+    <path d="M60 500H840" stroke="#232323" stroke-width="16" stroke-linecap="square"/>
+    <path d="M165 500V250L390 95L620 250V500" fill="#FFFFFF" stroke="#232323" stroke-width="14" stroke-linejoin="round"/>
+    <path d="M390 95L745 322V500" fill="#E9E5DA" stroke="#232323" stroke-width="14" stroke-linejoin="round"/>
+    <path d="M248 498V326H368V498" fill="#232323"/>
+    <path d="M444 322H565V418H444V322Z" fill="#A6D632" stroke="#232323" stroke-width="10"/>
+    <path d="M610 355H700V498H610V355Z" fill="#FFFFFF" stroke="#232323" stroke-width="10"/>
+    <path d="M165 252L390 95L620 252" stroke="#A6D632" stroke-width="18" stroke-linecap="square" stroke-linejoin="round"/>
+    <path d="M110 500V215" stroke="#232323" stroke-width="12"/>
+    <path d="M80 215H585" stroke="#232323" stroke-width="12"/>
+    <path d="M120 215L205 300" stroke="#232323" stroke-width="8"/>
+    <path d="M260 215L345 300" stroke="#232323" stroke-width="8"/>
+    <path d="M400 215L485 300" stroke="#232323" stroke-width="8"/>
+    <path d="M585 215V268" stroke="#232323" stroke-width="10"/>
+    <rect x="540" y="268" width="90" height="60" fill="#A6D632" stroke="#232323" stroke-width="10"/>
+  </g>
+  <g transform="translate(778 565)">
+    <rect x="0" y="0" width="250" height="88" fill="#A6D632" stroke="#232323" stroke-width="10"/>
+    <path d="M35 44H215" stroke="#232323" stroke-width="10" stroke-linecap="square"/>
+    <path d="M52 22V66M95 22V66M138 22V66M181 22V66" stroke="#232323" stroke-width="7"/>
+  </g>
+  <circle cx="1040" cy="150" r="78" fill="#A6D632" stroke="#232323" stroke-width="12"/>
+  <path d="M1010 150H1070M1040 120V180" stroke="#232323" stroke-width="10" stroke-linecap="square"/>
+</svg>
