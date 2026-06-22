@@ -36,7 +36,7 @@ export default function AboutSection() {
         <motion.div
           animate={{ y: [0, -10, 0], rotate: [0, 1.5, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-6 right-6 max-w-xs border border-[var(--site-border)] bg-[var(--site-bg)]/90 p-5 backdrop-blur sm:bottom-8 sm:right-8"
+          className="absolute bottom-6 right-6 max-w-xs border border-[var(--site-border)] bg-[var(--site-bg)] p-5 backdrop-blur sm:bottom-8 sm:right-8"
         >
           <p className="text-xs font-black uppercase tracking-[0.25em] text-brand-secondary">Design to Delivery</p>
           <p className="mt-3 text-2xl font-black text-brand-dark">{content.company.nameEn}</p>
