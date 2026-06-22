@@ -9,7 +9,7 @@ export default function AboutSection() {
   const content = useSiteContent();
 
   return (
-    <section id="about" className="site-section mx-auto grid w-[92%] max-w-7xl gap-10 py-16 sm:py-20 md:grid-cols-2">
+    <section id="about" className="site-section mx-auto grid w-[92%] max-w-7xl gap-10 py-16 sm:py-20 md:grid-cols-2 md:items-center">
       <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.22 }} variants={staggerContainer}>
         <SectionTitle title={content.nav[1].label} description={content.about.intro} eyebrow="About" />
         <div className="mt-8 space-y-5 sm:space-y-6">
@@ -27,19 +27,21 @@ export default function AboutSection() {
         whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
         viewport={{ once: false, amount: 0.35 }}
         transition={{ duration: 0.7 }}
-        className="site-card relative min-h-80 overflow-hidden sm:min-h-96"
+        className="site-card relative min-h-80 overflow-hidden p-3 sm:min-h-96 sm:p-5"
         data-cursor="active"
       >
-        <div className="blueprint-grid blueprint-drift absolute inset-0 opacity-70" />
-        <div className="absolute inset-6 border border-[var(--site-border)] sm:inset-8" />
-        <div className="absolute inset-12 border border-brand-primary/70 sm:inset-16" />
+        <div className="blueprint-grid blueprint-drift absolute inset-0 opacity-45" />
         <motion.div
-          animate={{ y: [0, -10, 0], rotate: [0, 1.5, 0] }}
+          animate={{ y: [0, -10, 0], rotate: [0, -1.2, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-6 right-6 max-w-xs border border-[var(--site-border)] bg-[var(--site-bg)] p-5 backdrop-blur sm:bottom-8 sm:right-8"
+          className="relative overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)]"
         >
-          <p className="text-xs font-black uppercase tracking-[0.25em] text-brand-secondary">Design to Delivery</p>
-          <p className="mt-3 text-2xl font-black text-brand-dark">{content.company.nameEn}</p>
+          <img src="/about-studio.svg" alt={content.about.intro} className="h-[360px] w-full object-cover sm:h-[470px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--site-inverse)] via-transparent to-transparent opacity-65" />
+          <div className="absolute bottom-4 right-4 max-w-xs border border-[var(--site-inverse-border)] bg-[var(--site-inverse-muted)] p-5 text-[var(--site-inverse-text)] backdrop-blur sm:bottom-6 sm:right-6">
+            <p className="text-xs font-black uppercase tracking-[0.25em] text-brand-primary">Design to Delivery</p>
+            <p className="mt-3 text-2xl font-black text-[var(--site-inverse-text)]">{content.company.nameEn}</p>
+          </div>
         </motion.div>
       </motion.div>
     </section>
