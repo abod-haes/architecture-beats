@@ -2,21 +2,25 @@
 
 :root {
   --brand-primary: #a6d632;
-  --brand-secondary: #7da716;
-  --brand-dark: #232323;
-  --brand-gray: #5a5c5b;
-  --site-bg: #f5f1e8;
-  --site-bg-soft: #ebe4d6;
-  --site-card: rgba(255, 255, 255, 0.78);
-  --site-card-solid: #ffffff;
-  --site-muted: rgba(35, 35, 35, 0.06);
-  --site-text: #232323;
-  --site-text-muted: #5a5c5b;
-  --site-border: rgba(35, 35, 35, 0.14);
-  --site-inverse: #232323;
-  --site-inverse-text: #ffffff;
-  --nav-bg: rgba(245, 241, 232, 0.92);
-  --blueprint-line: rgba(35, 35, 35, 0.08);
+  --brand-secondary: #6f9415;
+  --brand-dark: #20231d;
+  --brand-gray: #5d6356;
+  --site-bg: #f7f2e8;
+  --site-bg-soft: #ece2d2;
+  --site-surface: rgba(255, 250, 240, 0.82);
+  --site-surface-strong: #fffaf0;
+  --site-card: rgba(255, 250, 240, 0.78);
+  --site-card-solid: #fffaf0;
+  --site-muted: rgba(32, 35, 29, 0.06);
+  --site-accent-soft: rgba(166, 214, 50, 0.14);
+  --site-text: #20231d;
+  --site-text-muted: #5d6356;
+  --site-border: rgba(32, 35, 29, 0.14);
+  --site-inverse: #20231d;
+  --site-inverse-text: #fffaf0;
+  --site-shadow: rgba(32, 35, 29, 0.1);
+  --nav-bg: rgba(247, 242, 232, 0.91);
+  --blueprint-line: rgba(32, 35, 29, 0.08);
   --cursor-border: rgba(166, 214, 50, 0.85);
   --cursor-fill: rgba(166, 214, 50, 0.18);
 }
@@ -25,17 +29,21 @@
   --brand-secondary: #c2ee45;
   --brand-dark: #f7f1e7;
   --brand-gray: #b9b6ad;
-  --site-bg: #10110e;
-  --site-bg-soft: #171913;
+  --site-bg: #0e100c;
+  --site-bg-soft: #171a12;
+  --site-surface: rgba(255, 255, 255, 0.065);
+  --site-surface-strong: #1a1d15;
   --site-card: rgba(255, 255, 255, 0.075);
-  --site-card-solid: #181a15;
+  --site-card-solid: #181b14;
   --site-muted: rgba(166, 214, 50, 0.08);
+  --site-accent-soft: rgba(166, 214, 50, 0.13);
   --site-text: #f7f1e7;
   --site-text-muted: #b9b6ad;
   --site-border: rgba(255, 255, 255, 0.13);
   --site-inverse: #f7f1e7;
-  --site-inverse-text: #10110e;
-  --nav-bg: rgba(16, 17, 14, 0.9);
+  --site-inverse-text: #0e100c;
+  --site-shadow: rgba(0, 0, 0, 0.34);
+  --nav-bg: rgba(14, 16, 12, 0.91);
   --blueprint-line: rgba(166, 214, 50, 0.12);
   --cursor-border: rgba(166, 214, 50, 0.95);
   --cursor-fill: rgba(166, 214, 50, 0.22);
@@ -55,7 +63,8 @@ html {
 
 body {
   background:
-    radial-gradient(circle at 15% 10%, rgba(166, 214, 50, 0.12), transparent 28rem),
+    radial-gradient(circle at 15% 10%, rgba(166, 214, 50, 0.13), transparent 28rem),
+    radial-gradient(circle at 92% 18%, rgba(166, 214, 50, 0.08), transparent 24rem),
     linear-gradient(135deg, var(--site-bg) 0%, var(--site-bg-soft) 100%);
   color: var(--site-text);
 }
@@ -86,6 +95,7 @@ body {
   border: 1px solid var(--site-border);
   background: var(--site-card);
   backdrop-filter: blur(18px);
+  box-shadow: 0 18px 48px var(--site-shadow);
 }
 
 .mobile-safe-bottom {
