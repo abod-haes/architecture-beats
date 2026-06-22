@@ -57,7 +57,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 22 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.35 + index * 0.09 }}
-                  className="border border-white/15 bg-white/5 p-4"
+                  className="border border-[var(--site-inverse-border)] bg-[var(--site-inverse-muted)] p-4"
                 >
                   <div className="mb-4 flex items-center justify-between text-brand-primary">
                     {index % 2 === 0 ? <Building2 className="h-4 w-4" /> : <Ruler className="h-4 w-4" />}
