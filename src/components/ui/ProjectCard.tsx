@@ -35,10 +35,9 @@ export default function ProjectCard({ project, labels, slug, detailsLabel }: Pro
       data-cursor="active"
       className="group flex h-full flex-col overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)] shadow-[0_16px_40px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary/70"
     >
-      <Link href={`/projects/${slug}`} className="relative block overflow-hidden border-b border-[var(--site-border)]" aria-label={project.title}>
+      <Link href={`/projects/${slug}`} className="project-media-frame relative block overflow-hidden" aria-label={project.title}>
         <Image src={project.image} alt={project.title} width={900} height={620} className="h-44 w-full object-cover transition duration-700 group-hover:scale-105 sm:h-48" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/12 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 text-white">
+        <div className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-3 p-4 text-white">
           <p className="max-w-[65%] text-xs font-black uppercase tracking-[0.16em] text-brand-primary">{project.category}</p>
           <p className="border border-white/20 bg-black/35 px-2.5 py-1 text-[0.68rem] font-black backdrop-blur">{project.status}</p>
         </div>
