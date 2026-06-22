@@ -15,7 +15,7 @@ export default function ProjectsSection() {
   const y = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   return (
-    <section id="projects" ref={ref} className="site-section relative overflow-hidden py-16 sm:py-20">
+    <section id="projects" ref={ref} className="site-section section-panel relative overflow-hidden py-16 sm:py-20">
       <motion.div style={{ y }} className="blueprint-grid absolute inset-0 -z-10 opacity-45" />
       <div className="mx-auto w-[92%] max-w-7xl">
         <SectionTitle title={content.texts.projectsTitle} description={content.texts.projectsDescription} eyebrow="Portfolio" />
