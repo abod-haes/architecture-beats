@@ -23,6 +23,17 @@
   --site-shadow: rgba(32, 35, 29, 0.1);
   --nav-bg: rgba(247, 242, 232, 0.91);
   --blueprint-line: rgba(32, 35, 29, 0.08);
+  --footer-bg: #171a13;
+  --footer-bg-soft: #20251a;
+  --footer-text: #fffaf0;
+  --footer-muted: rgba(255, 250, 240, 0.68);
+  --footer-border: rgba(166, 214, 50, 0.22);
+  --cta-bg: #1c2117;
+  --cta-bg-soft: #2a321f;
+  --cta-text: #fffaf0;
+  --cta-muted: rgba(255, 250, 240, 0.76);
+  --cta-border: rgba(166, 214, 50, 0.34);
+  --cta-glow: rgba(166, 214, 50, 0.28);
   --cursor-ring: rgba(32, 35, 29, 0.52);
   --cursor-ring-active: rgba(111, 148, 21, 0.95);
   --cursor-active-fill: rgba(166, 214, 50, 0.12);
@@ -52,6 +63,17 @@
   --site-shadow: rgba(0, 0, 0, 0.34);
   --nav-bg: rgba(14, 16, 12, 0.91);
   --blueprint-line: rgba(166, 214, 50, 0.12);
+  --footer-bg: #070906;
+  --footer-bg-soft: #11150d;
+  --footer-text: #f7f1e7;
+  --footer-muted: rgba(247, 241, 231, 0.7);
+  --footer-border: rgba(194, 238, 69, 0.2);
+  --cta-bg: #10140d;
+  --cta-bg-soft: #1b2213;
+  --cta-text: #f7f1e7;
+  --cta-muted: rgba(247, 241, 231, 0.74);
+  --cta-border: rgba(194, 238, 69, 0.28);
+  --cta-glow: rgba(194, 238, 69, 0.22);
   --cursor-ring: rgba(247, 241, 231, 0.55);
   --cursor-ring-active: rgba(194, 238, 69, 0.98);
   --cursor-active-fill: rgba(166, 214, 50, 0.09);
@@ -94,11 +116,6 @@ body {
     linear-gradient(90deg, var(--blueprint-line) 1px, transparent 1px);
   background-size: 38px 38px;
   mask-image: radial-gradient(circle at center, black, transparent 72%);
-}
-
-.site-section {
-  position: relative;
-  isolation: isolate;
 }
 
 .site-card {
