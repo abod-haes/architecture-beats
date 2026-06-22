@@ -67,7 +67,7 @@ export default function Hero() {
                     {stat.value}
                     {stat.suffix}
                   </p>
-                  <p className="mt-1 text-sm font-bold text-[var(--site-inverse-text)]/90">{stat.label}</p>
+                  <p className="mt-1 text-sm font-bold text-[var(--site-inverse-text)] opacity-90">{stat.label}</p>
                 </motion.div>
               ))}
             </div>
