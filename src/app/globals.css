@@ -5,6 +5,9 @@
   --brand-secondary: #6f9415;
   --brand-dark: #20231d;
   --brand-gray: #5d6356;
+  --brand-cream: #f7f2e8;
+  --brand-cream-strong: #fffaf0;
+  --brand-olive-soft: #eef6d1;
   --site-bg: #f7f2e8;
   --site-bg-soft: #ece2d2;
   --site-surface: rgba(255, 250, 240, 0.82);
@@ -13,9 +16,11 @@
   --site-card-solid: #fffaf0;
   --site-muted: rgba(32, 35, 29, 0.06);
   --site-accent-soft: rgba(166, 214, 50, 0.14);
+  --site-accent-strong: rgba(166, 214, 50, 0.26);
   --site-text: #20231d;
   --site-text-muted: #5d6356;
   --site-border: rgba(32, 35, 29, 0.14);
+  --site-border-strong: rgba(111, 148, 21, 0.34);
   --site-inverse: #20231d;
   --site-inverse-text: #fffaf0;
   --site-inverse-muted: rgba(255, 255, 255, 0.08);
@@ -23,6 +28,12 @@
   --site-shadow: rgba(32, 35, 29, 0.1);
   --nav-bg: rgba(247, 242, 232, 0.91);
   --blueprint-line: rgba(32, 35, 29, 0.08);
+  --section-hero-bg: #f7f2e8;
+  --section-panel-bg: #f1e8d8;
+  --section-panel-soft: rgba(166, 214, 50, 0.1);
+  --section-accent-bg: #e9dfcc;
+  --media-overlay-strong: rgba(32, 35, 29, 0.72);
+  --media-overlay-soft: rgba(166, 214, 50, 0.16);
   --footer-bg: #171a13;
   --footer-bg-soft: #20251a;
   --footer-text: #fffaf0;
@@ -45,6 +56,9 @@
   --brand-secondary: #c2ee45;
   --brand-dark: #f7f1e7;
   --brand-gray: #b9b6ad;
+  --brand-cream: #11140d;
+  --brand-cream-strong: #1a1d15;
+  --brand-olive-soft: #222c15;
   --site-bg: #0e100c;
   --site-bg-soft: #171a12;
   --site-surface: rgba(255, 255, 255, 0.065);
@@ -53,9 +67,11 @@
   --site-card-solid: #181b14;
   --site-muted: rgba(166, 214, 50, 0.08);
   --site-accent-soft: rgba(166, 214, 50, 0.13);
+  --site-accent-strong: rgba(166, 214, 50, 0.22);
   --site-text: #f7f1e7;
   --site-text-muted: #b9b6ad;
   --site-border: rgba(255, 255, 255, 0.13);
+  --site-border-strong: rgba(194, 238, 69, 0.3);
   --site-inverse: #f7f1e7;
   --site-inverse-text: #0e100c;
   --site-inverse-muted: rgba(14, 16, 12, 0.07);
@@ -63,6 +79,12 @@
   --site-shadow: rgba(0, 0, 0, 0.34);
   --nav-bg: rgba(14, 16, 12, 0.91);
   --blueprint-line: rgba(166, 214, 50, 0.12);
+  --section-hero-bg: #0e100c;
+  --section-panel-bg: #14180f;
+  --section-panel-soft: rgba(166, 214, 50, 0.08);
+  --section-accent-bg: #12160e;
+  --media-overlay-strong: rgba(0, 0, 0, 0.72);
+  --media-overlay-soft: rgba(194, 238, 69, 0.12);
   --footer-bg: #070906;
   --footer-bg-soft: #11150d;
   --footer-text: #f7f1e7;
@@ -118,11 +140,89 @@ body {
   mask-image: radial-gradient(circle at center, black, transparent 72%);
 }
 
+.site-section {
+  position: relative;
+  isolation: isolate;
+}
+
+.section-hero {
+  background:
+    radial-gradient(circle at 18% 16%, var(--site-accent-strong), transparent 25rem),
+    radial-gradient(circle at 92% 6%, rgba(111, 148, 21, 0.1), transparent 26rem),
+    linear-gradient(135deg, var(--section-hero-bg), var(--site-bg-soft));
+}
+
+.section-surface {
+  background:
+    radial-gradient(circle at 10% 18%, var(--section-panel-soft), transparent 24rem),
+    linear-gradient(180deg, var(--site-bg), var(--site-bg-soft));
+}
+
+.section-panel {
+  overflow: hidden;
+  border-block: 1px solid var(--site-border);
+  background:
+    radial-gradient(circle at 14% 14%, var(--site-accent-soft), transparent 22rem),
+    radial-gradient(circle at 86% 84%, rgba(111, 148, 21, 0.09), transparent 26rem),
+    linear-gradient(135deg, var(--section-panel-bg), var(--site-bg));
+}
+
+.section-accent {
+  overflow: hidden;
+  border-block: 1px solid var(--site-border-strong);
+  background:
+    linear-gradient(135deg, var(--section-accent-bg), var(--section-panel-bg)),
+    radial-gradient(circle at 50% 0%, var(--site-accent-strong), transparent 24rem);
+}
+
+.project-detail-shell {
+  background:
+    radial-gradient(circle at 18% 5%, var(--site-accent-strong), transparent 26rem),
+    radial-gradient(circle at 88% 28%, rgba(111, 148, 21, 0.12), transparent 24rem),
+    linear-gradient(160deg, var(--site-bg), var(--site-bg-soft));
+}
+
 .site-card {
   border: 1px solid var(--site-border);
   background: var(--site-card);
   backdrop-filter: blur(18px);
   box-shadow: 0 18px 48px var(--site-shadow);
+}
+
+.brand-media-frame,
+.project-media-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--site-border-strong);
+  background:
+    linear-gradient(135deg, var(--brand-primary), transparent 34%),
+    linear-gradient(180deg, var(--site-card-solid), var(--site-bg-soft));
+}
+
+.brand-media-frame::after,
+.project-media-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, var(--media-overlay-strong), transparent 48%),
+    radial-gradient(circle at 18% 12%, var(--media-overlay-soft), transparent 30rem);
+}
+
+.brand-media-frame img,
+.project-media-frame img {
+  filter: saturate(1.05) contrast(1.03);
+  transform: translateZ(0);
+}
+
+:root[data-theme="dark"] .brand-media-frame img,
+:root[data-theme="dark"] .project-media-frame img {
+  filter: saturate(0.92) contrast(1.08) brightness(0.82);
+}
+
+.brand-accent-line {
+  background: linear-gradient(90deg, transparent, var(--brand-primary), transparent);
 }
 
 .mobile-safe-bottom {
