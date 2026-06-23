@@ -225,6 +225,24 @@ body {
   background: linear-gradient(90deg, transparent, var(--brand-primary), transparent);
 }
 
+.slider-scroll {
+  scrollbar-color: var(--brand-secondary) transparent;
+  scrollbar-width: thin;
+}
+
+.slider-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.slider-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.slider-scroll::-webkit-scrollbar-thumb {
+  background: var(--brand-secondary);
+  border-radius: 999px;
+}
+
 .mobile-safe-bottom {
   padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
 }
