@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, BriefcaseBusiness, Building2, CheckCircle2, Code2, HardHat, Mail, MapPin, PenTool, Sparkles } from "lucide-react";
@@ -109,13 +110,26 @@ export default function TeamMemberPageClient({ slug }: { slug: string }) {
           {labels.backToTeam}
         </Link>
 
-        <motion.section initial="hidden" animate="visible" variants={staggerContainer} className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <motion.div variants={fadeUp} className="site-card relative overflow-hidden p-6 sm:p-8">
+        <motion.section initial="hidden" animate="visible" variants={staggerContainer} className="mt-8 grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <motion.div variants={fadeUp} className="site-card relative overflow-hidden p-4 sm:p-5">
             <div className="pointer-events-none absolute -end-20 -top-20 h-48 w-48 rounded-full bg-[var(--site-accent-soft)] blur-3xl" />
-            <div className="relative flex h-24 w-24 items-center justify-center border border-brand-primary bg-brand-primary/20 text-brand-dark">
-              <Icon className="h-12 w-12" />
+            <div className="relative overflow-hidden border border-[var(--site-border-strong)] bg-[var(--site-muted)]">
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 45vw, 92vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="absolute start-4 top-4 flex h-14 w-14 items-center justify-center border border-brand-primary bg-[var(--site-card)] text-brand-dark shadow-[0_14px_34px_var(--site-shadow)]">
+                <Icon className="h-7 w-7" />
+              </div>
             </div>
-            <div className="relative mt-7">
+
+            <div className="relative mt-7 px-1 pb-2 sm:px-3">
               <p className="text-xs font-black uppercase tracking-[0.25em] text-brand-secondary">{member.position}</p>
               <h1 className="mt-3 text-4xl font-black leading-tight text-brand-dark sm:text-5xl">{member.name}</h1>
               <p className="mt-3 text-lg font-black text-brand-secondary">{member.jobTitle}</p>
@@ -124,7 +138,7 @@ export default function TeamMemberPageClient({ slug }: { slug: string }) {
                 {member.location}
               </p>
             </div>
-            <div className="relative mt-6 flex flex-wrap gap-2">
+            <div className="relative mt-5 flex flex-wrap gap-2 px-1 pb-2 sm:px-3">
               {member.badges.map((badge) => (
                 <span key={badge} className="border border-brand-primary/40 bg-[var(--site-accent-soft)] px-3 py-1.5 text-xs font-black text-brand-dark">
                   {badge}
