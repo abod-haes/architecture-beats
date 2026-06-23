@@ -2,8 +2,8 @@ import AboutSection from "@/components/sections/AboutSection";
 import CTASection from "@/components/sections/CTASection";
 import ContactSection from "@/components/sections/ContactSection";
 import Hero from "@/components/sections/Hero";
+import HomeProjectsSlider from "@/components/sections/HomeProjectsSlider";
 import ProcessSection from "@/components/sections/ProcessSection";
-import ProjectsSection from "@/components/sections/ProjectsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import StatsSection from "@/components/sections/StatsSection";
 import TeamSection from "@/components/sections/TeamSection";
@@ -37,7 +37,7 @@ export default function Home() {
       <AboutSection />
       <WhyUsSection />
       <ProcessSection />
-      <ProjectsSection />
+      <HomeProjectsSlider />
       <StatsSection />
       <TeamSection />
       <CTASection />
