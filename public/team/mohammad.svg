@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Site engineer profile illustration</title>
+  <desc id="desc">Professional site engineer avatar with hard hat and construction details.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5eee1"/><stop offset="1" stop-color="#d3bea0"/></linearGradient>
+    <linearGradient id="vest" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9bc642"/><stop offset="1" stop-color="#5b7f1a"/></linearGradient>
+    <clipPath id="circle"><circle cx="450" cy="430" r="255"/></clipPath>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)"/>
+  <path d="M100 205h700M100 405h700M100 605h700M205 100v700M405 100v700M605 100v700" stroke="#242820" stroke-opacity=".06" stroke-width="2"/>
+  <circle cx="450" cy="430" r="292" fill="#fff9ee" opacity=".72"/>
+  <g clip-path="url(#circle)">
+    <rect x="160" y="175" width="580" height="560" fill="#eadbc2"/>
+    <path d="M160 646c82-116 179-174 292-174s209 58 288 174v122H160Z" fill="#232823"/>
+    <path d="M310 676c24-70 71-105 140-105 72 0 120 35 146 105l-146 65Z" fill="url(#vest)"/>
+    <path d="M318 381c-5-88 48-153 132-153s137 65 132 153l-20 106c-10 58-57 100-112 100s-102-42-112-100Z" fill="#bb875e"/>
+    <path d="M305 361c19-82 73-130 145-130 74 0 127 48 145 130-34-17-68-22-102-13-46 12-89 11-129-4-24 6-44 11-59 17Z" fill="#211c17"/>
+    <path d="M294 397c-27-7-47 15-35 51 7 21 23 36 45 39Zm312 0c27-7 47 15 35 51-7 21-23 36-45 39Z" fill="#bb875e"/>
+    <path d="M370 491c35 31 86 31 121 0" fill="none" stroke="#573326" stroke-width="10" stroke-linecap="round"/>
+    <path d="M302 265h296l42 90H260Z" fill="#f0e7d3" stroke="#242820" stroke-width="12"/>
+    <path d="M348 265c18-64 52-96 103-96s86 32 103 96" fill="none" stroke="#8fb63e" stroke-width="27" stroke-linecap="round"/>
+  </g>
+  <g fill="none" stroke="#6c901d" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+    <path d="M140 708h210"/><path d="M170 708l38-72h112l38 72"/>
+    <path d="M668 168l82 82M750 168l-82 82"/>
+  </g>
+  <rect x="72" y="72" width="756" height="756" fill="none" stroke="#2d3028" stroke-opacity=".16" stroke-width="3"/>
+</svg>
