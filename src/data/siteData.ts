@@ -135,7 +135,7 @@ const sharedCompany = {
   address: "حماة / ساحة العاصي - مقابل قيادة الشرطة",
   email: "Architecture.beats@gmail.com",
   phone: "033 2222428",
-  mobile: "0997 418848",
+  mobile: "+963 997 418 848",
   whatsapp: "963997418848",
 };
 
