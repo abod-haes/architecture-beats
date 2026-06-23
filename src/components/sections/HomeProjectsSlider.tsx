@@ -3,17 +3,24 @@
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight, Grid2X2 } from "lucide-react";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
+import type { PointerEvent } from "react";
 import { useLocale } from "@/context/LocaleContext";
 import { projectDetailLabels, projectSlugs } from "@/data/projectDetails";
 import ProjectCard from "../ui/ProjectCard";
 import SectionTitle from "../ui/SectionTitle";
 import { staggerContainer } from "@/lib/motion";
 
+const AUTO_SCROLL_DELAY = 3600;
+const DRAG_SPEED = 1.12;
+
 export default function HomeProjectsSlider() {
   const { content, locale, dir } = useLocale();
   const sectionRef = useRef<HTMLElement | null>(null);
   const sliderRef = useRef<HTMLDivElement | null>(null);
+  const autoPausedRef = useRef(false);
+  const didDragRef = useRef(false);
+  const dragRef = useRef({ isDown: false, startX: 0, scrollLeft: 0 });
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [70, -70]);
   const isArabic = locale === "ar";
@@ -23,13 +30,87 @@ export default function HomeProjectsSlider() {
     next: isArabic ? "التالي" : "Next",
   };
 
-  const scrollSlider = (direction: "prev" | "next") => {
+  const getScrollAmount = useCallback((slider: HTMLDivElement) => Math.min(slider.clientWidth * 0.82, 460), []);
+
+  const scrollSlider = useCallback(
+    (direction: "prev" | "next") => {
+      const slider = sliderRef.current;
+      if (!slider) return;
+
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+      const amount = getScrollAmount(slider);
+      const nextLeft = direction === "next" ? slider.scrollLeft + amount : slider.scrollLeft - amount;
+
+      slider.scrollTo({
+        left: Math.max(0, Math.min(maxScroll, nextLeft)),
+        behavior: "smooth",
+      });
+    },
+    [getScrollAmount]
+  );
+
+  const autoScroll = useCallback(() => {
+    const slider = sliderRef.current;
+    if (!slider || autoPausedRef.current) return;
+
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+    if (maxScroll <= 0) return;
+
+    if (slider.scrollLeft >= maxScroll - 8) {
+      slider.scrollTo({ left: 0, behavior: "smooth" });
+      return;
+    }
+
+    slider.scrollBy({ left: getScrollAmount(slider), behavior: "smooth" });
+  }, [getScrollAmount]);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(autoScroll, AUTO_SCROLL_DELAY);
+    return () => window.clearInterval(intervalId);
+  }, [autoScroll]);
+
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "touch") return;
+
     const slider = sliderRef.current;
     if (!slider) return;
 
-    const amount = Math.min(slider.clientWidth * 0.86, 420);
-    const signedAmount = direction === "next" ? amount : -amount;
-    slider.scrollBy({ left: isArabic ? -signedAmount : signedAmount, behavior: "smooth" });
+    autoPausedRef.current = true;
+    didDragRef.current = false;
+    dragRef.current = {
+      isDown: true,
+      startX: event.clientX,
+      scrollLeft: slider.scrollLeft,
+    };
+    slider.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    const slider = sliderRef.current;
+    const drag = dragRef.current;
+    if (!slider || !drag.isDown) return;
+
+    event.preventDefault();
+    const walk = (event.clientX - drag.startX) * DRAG_SPEED;
+    slider.scrollLeft = drag.scrollLeft - walk;
+
+    if (Math.abs(walk) > 6) {
+      didDragRef.current = true;
+    }
+  };
+
+  const stopDrag = () => {
+    dragRef.current.isDown = false;
+  };
+
+  const handleSliderClick = (event: PointerEvent<HTMLDivElement>) => {
+    if (!didDragRef.current) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    window.setTimeout(() => {
+      didDragRef.current = false;
+    }, 40);
   };
 
   return (
@@ -38,57 +119,78 @@ export default function HomeProjectsSlider() {
       <div className="mx-auto w-[92%] max-w-7xl">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <SectionTitle title={content.texts.projectsTitle} description={content.texts.projectsDescription} eyebrow="Portfolio" />
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="flex overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)] p-1 shadow-[0_14px_34px_var(--site-shadow)] backdrop-blur">
-              <button
-                type="button"
-                onClick={() => scrollSlider("prev")}
-                data-cursor="active"
-                className="inline-flex h-11 w-11 items-center justify-center text-brand-dark transition hover:bg-brand-primary hover:text-[#232323]"
-                aria-label={labels.previous}
-              >
-                {isArabic ? <ArrowRight className="h-4 w-4" /> : <ArrowLeft className="h-4 w-4" />}
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollSlider("next")}
-                data-cursor="active"
-                className="inline-flex h-11 w-11 items-center justify-center text-brand-dark transition hover:bg-brand-primary hover:text-[#232323]"
-                aria-label={labels.next}
-              >
-                {isArabic ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}
-              </button>
-            </div>
-            <Link
-              href="/projects"
-              data-cursor="active"
-              className="inline-flex h-12 items-center gap-2 border border-brand-primary bg-brand-primary px-5 text-sm font-black text-[#232323] shadow-[0_14px_34px_var(--site-shadow)] transition hover:bg-brand-secondary"
-            >
-              <Grid2X2 className="h-4 w-4" />
-              {labels.all}
-            </Link>
-          </div>
+          <Link
+            href="/projects"
+            data-cursor="active"
+            className="inline-flex h-12 w-fit items-center gap-2 border border-brand-primary bg-brand-primary px-5 text-sm font-black text-[#232323] shadow-[0_14px_34px_var(--site-shadow)] transition hover:bg-brand-secondary"
+          >
+            <Grid2X2 className="h-4 w-4" />
+            {labels.all}
+          </Link>
         </div>
 
-        <motion.div
-          ref={sliderRef}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.12 }}
-          variants={staggerContainer}
-          className="slider-scroll mt-8 flex snap-x snap-mandatory gap-4 overflow-y-hidden overflow-x-auto scroll-smooth pb-4 sm:mt-10 sm:gap-5"
+        <div
+          className="relative mt-8 sm:mt-10"
+          onMouseEnter={() => {
+            autoPausedRef.current = true;
+          }}
+          onMouseLeave={() => {
+            autoPausedRef.current = false;
+            stopDrag();
+          }}
+          onFocusCapture={() => {
+            autoPausedRef.current = true;
+          }}
+          onBlurCapture={() => {
+            autoPausedRef.current = false;
+          }}
         >
-          {content.projects.map((project, index) => (
-            <div key={project.title} className="w-[86%] shrink-0 snap-start sm:w-[26rem] lg:w-[28rem]">
-              <ProjectCard
-                project={project}
-                labels={content.texts.projectLabels}
-                slug={projectSlugs[index]}
-                detailsLabel={projectDetailLabels[locale].detailsCta}
-              />
-            </div>
-          ))}
-        </motion.div>
+          <button
+            type="button"
+            onClick={() => scrollSlider("prev")}
+            data-cursor="active"
+            className="absolute left-0 top-1/2 z-20 inline-flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323] max-sm:left-3 max-sm:h-10 max-sm:w-10 max-sm:translate-x-0"
+            aria-label={labels.previous}
+          >
+            <ArrowLeft className="h-4 w-4" />
+          </button>
+
+          <button
+            type="button"
+            onClick={() => scrollSlider("next")}
+            data-cursor="active"
+            className="absolute right-0 top-1/2 z-20 inline-flex h-11 w-11 translate-x-1/2 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323] max-sm:right-3 max-sm:h-10 max-sm:w-10 max-sm:translate-x-0"
+            aria-label={labels.next}
+          >
+            <ArrowRight className="h-4 w-4" />
+          </button>
+
+          <motion.div
+            ref={sliderRef}
+            dir="ltr"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.12 }}
+            variants={staggerContainer}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={stopDrag}
+            onPointerCancel={stopDrag}
+            onClickCapture={handleSliderClick}
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden scroll-smooth px-1 py-2 [scrollbar-width:none] sm:gap-5 sm:px-3 [&::-webkit-scrollbar]:hidden"
+          >
+            {content.projects.map((project, index) => (
+              <div key={project.title} dir={dir} className="w-[86%] shrink-0 snap-start sm:w-[26rem] lg:w-[28rem]">
+                <ProjectCard
+                  project={project}
+                  labels={content.texts.projectLabels}
+                  slug={projectSlugs[index]}
+                  detailsLabel={projectDetailLabels[locale].detailsCta}
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
