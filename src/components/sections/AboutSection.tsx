@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useSiteContent } from "@/context/LocaleContext";
 import SectionTitle from "../ui/SectionTitle";
 import { fadeUp, staggerContainer } from "@/lib/motion";
@@ -37,7 +38,7 @@ export default function AboutSection() {
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             className="brand-media-frame relative"
           >
-            <img src="/about-studio.svg" alt={content.about.intro} className="h-[360px] w-full object-cover sm:h-[470px]" />
+            <Image src="/about-interior.jpg" alt={content.about.intro} width={1600} height={1067} className="h-[360px] w-full object-cover sm:h-[470px]" />
             <div className="absolute bottom-4 end-4 z-10 max-w-xs border border-[var(--site-inverse-border)] bg-[var(--site-inverse-muted)] p-5 text-[var(--site-inverse-text)] backdrop-blur sm:bottom-6 sm:end-6">
               <p className="text-xs font-black uppercase tracking-[0.25em] text-brand-primary">Design to Delivery</p>
               <p className="mt-3 text-2xl font-black text-[var(--site-inverse-text)]">{content.company.nameEn}</p>

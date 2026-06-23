@@ -13,8 +13,8 @@ type Props = {
 export default function ThemeToggle({ locale, className }: Props) {
   const { isDark, toggleTheme } = useTheme();
   const isArabic = locale === "ar";
-  const currentLabel = isArabic ? (isDark ? "دارك" : "لايت") : isDark ? "Dark" : "Light";
-  const nextLabel = isArabic ? (isDark ? "الوضع الفاتح" : "الوضع الداكن") : isDark ? "Light mode" : "Dark mode";
+  const currentLabel = isArabic ? (isDark ? "داكن" : "فاتح") : isDark ? "Dark" : "Light";
+  const nextLabel = isArabic ? (isDark ? "تفعيل الوضع الفاتح" : "تفعيل الوضع الداكن") : isDark ? "Switch to light mode" : "Switch to dark mode";
 
   return (
     <button
@@ -37,13 +37,18 @@ export default function ThemeToggle({ locale, className }: Props) {
         )}
         aria-hidden="true"
       >
-        <span className="absolute inset-y-0 left-1 grid place-items-center text-brand-primary">
+        <span className="absolute inset-y-0 left-1 grid place-items-center text-brand-primary/75">
           <Sun className="h-3.5 w-3.5" />
         </span>
-        <span className="absolute inset-y-0 right-1 grid place-items-center text-brand-primary">
+        <span className="absolute inset-y-0 right-1 grid place-items-center text-brand-primary/75">
           <Moon className="h-3.5 w-3.5" />
         </span>
-        <span className={cn("absolute top-1 h-5 w-5 rounded-full bg-brand-primary transition-transform duration-300", isDark ? "translate-x-7" : "translate-x-1")} />
+        <span
+          className={cn(
+            "absolute top-0.5 z-20 h-6 w-6 rounded-full border border-white/85 bg-[#fbf6df] ring-2 ring-brand-primary/30 shadow-[0_6px_14px_rgba(0,0,0,0.22),inset_0_1px_1px_rgba(255,255,255,0.95)] transition-[transform,background-color,box-shadow] duration-300 ease-out",
+            isDark ? isArabic ? "translate-x-[-24px]" : "translate-x-[24px]" : "translate-x-[0]",
+          )}
+        />
       </span>
       <span className={cn("min-w-9 text-center text-[var(--site-text)] transition group-hover:text-brand-primary", isArabic ? "tracking-normal" : "uppercase tracking-[0.14em]")}>{currentLabel}</span>
     </button>

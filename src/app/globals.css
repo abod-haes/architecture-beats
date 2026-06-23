@@ -243,9 +243,7 @@ body {
   border-radius: 999px;
 }
 
-.mobile-safe-bottom {
-  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
-}
+
 
 .cursor-reactive {
   cursor: none;

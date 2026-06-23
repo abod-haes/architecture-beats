@@ -35,12 +35,12 @@ const mapFor = (query: string, zoom = 13) => ({
 });
 
 const galleries: Record<ProjectSlug, ProjectGalleryImage[]> = {
-  "modern-residential-villa": ["/projects/project-1.svg", "/projects/project-2.svg", "/projects/project-3.svg"],
-  "contemporary-family-apartment": ["/projects/project-2.svg", "/projects/project-5.svg", "/projects/project-4.svg"],
-  "commercial-facade-identity": ["/projects/project-3.svg", "/projects/project-1.svg", "/projects/project-6.svg"],
-  "luxury-fit-out-project": ["/projects/project-4.svg", "/projects/project-2.svg", "/projects/project-5.svg"],
-  "administrative-engineering-office": ["/projects/project-5.svg", "/projects/project-3.svg", "/projects/project-1.svg"],
-  "existing-building-rehabilitation": ["/projects/project-6.svg", "/projects/project-4.svg", "/projects/project-3.svg"],
+  "modern-residential-villa": ["/projects/project-1.jpg", "/projects/project-2.jpg", "/projects/project-3.jpg"],
+  "contemporary-family-apartment": ["/projects/project-2.jpg", "/projects/project-5.jpg", "/projects/project-4.jpg"],
+  "commercial-facade-identity": ["/projects/project-3.jpg", "/projects/project-1.jpg", "/projects/project-6.jpg"],
+  "luxury-fit-out-project": ["/projects/project-4.jpg", "/projects/project-2.jpg", "/projects/project-5.jpg"],
+  "administrative-engineering-office": ["/projects/project-5.jpg", "/projects/project-3.jpg", "/projects/project-1.jpg"],
+  "existing-building-rehabilitation": ["/projects/project-6.jpg", "/projects/project-4.jpg", "/projects/project-3.jpg"],
 };
 
 export const projectDetailLabels: Record<

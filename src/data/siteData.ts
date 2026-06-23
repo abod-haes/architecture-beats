@@ -255,7 +255,7 @@ export const localizedSiteData: Record<Locale, SiteContent> = {
       {
         title: "فيلا سكنية مودرن",
         category: "تصميم خارجي وتنفيذ",
-        image: "/projects/project-1.svg",
+        image: "/projects/project-1.jpg",
         description: "مشروع فيلا يعتمد على كتل حادة، فتحات محسوبة، وحلول إنارة خارجية تعطي حضوراً واضحاً ليلاً ونهاراً.",
         location: "حماة",
         year: "2026",
@@ -267,7 +267,7 @@ export const localizedSiteData: Record<Locale, SiteContent> = {
       {
         title: "شقة عائلية معاصرة",
         category: "تصميم داخلي وإكساء",
-        image: "/projects/project-2.svg",
+        image: "/projects/project-2.jpg",
         description: "إعادة تنظيم المساحات الداخلية لتكون أكثر عملية مع لوحة ألوان هادئة وتفاصيل تخزين مخفية.",
         location: "حماة",
         year: "2025",
@@ -279,7 +279,7 @@ export const localizedSiteData: Record<Locale, SiteContent> = {
       {
         title: "واجهة تجارية وهوية مكان",
         category: "واجهات وهوية بصرية",
-        image: "/projects/project-3.svg",
+        image: "/projects/project-3.jpg",
         description: "تحويل واجهة تجارية إلى نقطة جذب واضحة تجمع بين العلامة، الخامة، الإضاءة، وحركة الزبائن.",
         location: "حماة - مركز المدينة",
         year: "2025",
@@ -291,7 +291,7 @@ export const localizedSiteData: Record<Locale, SiteContent> = {
       {
         title: "مشروع إكساء فاخر",
         category: "تنفيذ وإدارة ورشات",
-        image: "/projects/project-4.svg",
+        image: "/projects/project-4.jpg",
         description: "إدارة تنفيذ تفصيلية لمشروع إكساء كامل مع ضبط المواد، الورشات، وجدول التسليم.",
         location: "ريف حماة",
         year: "2024",
@@ -303,7 +303,7 @@ export const localizedSiteData: Record<Locale, SiteContent> = {
       {
         title: "مكتب هندسي إداري",
         category: "تصميم مكاتب",
-        image: "/projects/project-5.svg",
+        image: "/projects/project-5.jpg",
         description: "تصميم مساحة عمل تعكس الاحتراف والوضوح مع توزيع مرن لمناطق الاجتماعات والعمل الفردي.",
         location: "حماة",
         year: "2024",
@@ -315,7 +315,7 @@ export const localizedSiteData: Record<Locale, SiteContent> = {
       {
         title: "إعادة تأهيل مبنى قائم",
         category: "ترميم وتطوير",
-        image: "/projects/project-6.svg",
+        image: "/projects/project-6.jpg",
         description: "تحسين مبنى قائم عبر معالجة الواجهة، تنظيم المداخل، وتحديث تفاصيل الإكساء دون فقدان شخصية المكان.",
         location: "حماة",
         year: "2023",
@@ -500,7 +500,7 @@ export const localizedSiteData: Record<Locale, SiteContent> = {
       {
         title: "Modern Residential Villa",
         category: "Exterior Design & Execution",
-        image: "/projects/project-1.svg",
+        image: "/projects/project-1.jpg",
         description: "A villa project built around sharp volumes, calculated openings, and architectural lighting for a strong day-and-night presence.",
         location: "Hama",
         year: "2026",
@@ -512,7 +512,7 @@ export const localizedSiteData: Record<Locale, SiteContent> = {
       {
         title: "Contemporary Family Apartment",
         category: "Interior Design & Fit-Out",
-        image: "/projects/project-2.svg",
+        image: "/projects/project-2.jpg",
         description: "A redesigned apartment with more practical circulation, calm colors, and hidden storage details.",
         location: "Hama",
         year: "2025",
@@ -524,7 +524,7 @@ export const localizedSiteData: Record<Locale, SiteContent> = {
       {
         title: "Commercial Facade Identity",
         category: "Facade & Visual Identity",
-        image: "/projects/project-3.svg",
+        image: "/projects/project-3.jpg",
         description: "A commercial frontage redesigned as a clear attraction point connecting brand, material, lighting, and customer flow.",
         location: "Hama - City Center",
         year: "2025",
@@ -536,7 +536,7 @@ export const localizedSiteData: Record<Locale, SiteContent> = {
       {
         title: "Luxury Fit-Out Project",
         category: "Execution & Workshop Management",
-        image: "/projects/project-4.svg",
+        image: "/projects/project-4.jpg",
         description: "A complete fit-out execution project with detailed control over materials, teams, and delivery schedule.",
         location: "Hama Countryside",
         year: "2024",
@@ -548,7 +548,7 @@ export const localizedSiteData: Record<Locale, SiteContent> = {
       {
         title: "Administrative Engineering Office",
         category: "Office Design",
-        image: "/projects/project-5.svg",
+        image: "/projects/project-5.jpg",
         description: "A workspace designed to express professionalism with flexible areas for meetings, focused work, and reception.",
         location: "Hama",
         year: "2024",
@@ -560,7 +560,7 @@ export const localizedSiteData: Record<Locale, SiteContent> = {
       {
         title: "Existing Building Rehabilitation",
         category: "Renovation & Upgrade",
-        image: "/projects/project-6.svg",
+        image: "/projects/project-6.jpg",
         description: "An upgrade for an existing building through facade treatment, entrance organization, and improved finishing details.",
         location: "Hama",
         year: "2023",
