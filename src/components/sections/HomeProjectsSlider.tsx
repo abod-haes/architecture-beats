@@ -76,7 +76,7 @@ export default function HomeProjectsSlider() {
           whileInView="visible"
           viewport={{ once: false, amount: 0.12 }}
           variants={staggerContainer}
-          className="slider-scroll mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4 sm:mt-10 sm:gap-5"
+          className="slider-scroll mt-8 flex snap-x snap-mandatory gap-4 overflow-y-hidden overflow-x-auto scroll-smooth pb-4 sm:mt-10 sm:gap-5"
         >
           {content.projects.map((project, index) => (
             <div key={project.title} className="w-[86%] shrink-0 snap-start sm:w-[26rem] lg:w-[28rem]">
