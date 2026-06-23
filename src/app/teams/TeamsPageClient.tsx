@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, BriefcaseBusiness, Building2, Code2, HardHat, MapPin, PenTool, Sparkles } from "lucide-react";
@@ -42,51 +43,64 @@ export default function TeamsPageClient() {
                 variants={fadeUp}
                 data-cursor="active"
                 whileHover={{ y: -7, scale: 1.01 }}
-                className="group relative flex min-h-full flex-col overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)] p-5 backdrop-blur transition hover:border-brand-primary sm:p-6"
+                className="group relative flex min-h-full flex-col overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)] p-3 backdrop-blur transition hover:border-brand-primary sm:p-4"
               >
                 <div className="pointer-events-none absolute -end-16 -top-16 h-40 w-40 rounded-full bg-[var(--site-accent-soft)] blur-2xl transition group-hover:scale-125" />
-                <div className="relative flex items-start justify-between gap-4">
-                  <div className="flex h-16 w-16 items-center justify-center border border-brand-primary bg-brand-primary/20 text-brand-dark transition group-hover:bg-brand-primary group-hover:text-[#232323]">
-                    <Icon className="h-8 w-8" />
+
+                <div className="relative overflow-hidden border border-[var(--site-border-strong)] bg-[var(--site-muted)]">
+                  <div className="relative aspect-[16/11]">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 92vw"
+                      className="object-cover transition duration-700 group-hover:scale-105"
+                    />
                   </div>
-                  <div className="flex flex-wrap justify-end gap-2">
+                  <div className="absolute start-4 top-4 flex h-12 w-12 items-center justify-center border border-brand-primary bg-[var(--site-card)] text-brand-dark shadow-[0_14px_34px_var(--site-shadow)] transition group-hover:bg-brand-primary group-hover:text-[#232323]">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                </div>
+
+                <div className="relative flex flex-1 flex-col p-2 pt-6 sm:p-3 sm:pt-6">
+                  <div className="flex flex-wrap gap-2">
                     {member.badges.slice(0, 2).map((badge) => (
                       <span key={badge} className="border border-brand-primary/35 bg-[var(--site-accent-soft)] px-2.5 py-1 text-[0.68rem] font-black text-brand-dark">
                         {badge}
                       </span>
                     ))}
                   </div>
-                </div>
 
-                <div className="relative mt-6">
-                  <h1 className="text-2xl font-black text-brand-dark">{member.name}</h1>
-                  <p className="mt-2 text-sm font-black text-brand-secondary">{member.jobTitle}</p>
-                  <p className="mt-3 flex items-center gap-2 text-sm text-brand-gray">
-                    <MapPin className="h-4 w-4 text-brand-secondary" />
-                    {member.location}
-                  </p>
-                </div>
+                  <div className="mt-5">
+                    <h1 className="text-2xl font-black text-brand-dark">{member.name}</h1>
+                    <p className="mt-2 text-sm font-black text-brand-secondary">{member.jobTitle}</p>
+                    <p className="mt-3 flex items-center gap-2 text-sm text-brand-gray">
+                      <MapPin className="h-4 w-4 text-brand-secondary" />
+                      {member.location}
+                    </p>
+                  </div>
 
-                <p className="relative mt-5 flex-1 leading-8 text-brand-gray">{member.summary}</p>
+                  <p className="mt-5 flex-1 leading-8 text-brand-gray">{member.summary}</p>
 
-                <div className="relative mt-5 flex flex-wrap gap-2">
-                  {member.skills.slice(0, 4).map((skill) => (
-                    <span key={skill} className="border border-[var(--site-border)] bg-[var(--site-muted)] px-2.5 py-1 text-xs font-bold text-brand-dark">
-                      {skill}
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {member.skills.slice(0, 4).map((skill) => (
+                      <span key={skill} className="border border-[var(--site-border)] bg-[var(--site-muted)] px-2.5 py-1 text-xs font-bold text-brand-dark">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+
+                  <Link
+                    href={`/teams/${member.slug}`}
+                    className="mt-6 inline-flex items-center justify-between gap-3 border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-3 text-sm font-black text-brand-dark transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323]"
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      <Sparkles className="h-4 w-4" />
+                      {labels.viewProfile}
                     </span>
-                  ))}
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
                 </div>
-
-                <Link
-                  href={`/teams/${member.slug}`}
-                  className="relative mt-6 inline-flex items-center justify-between gap-3 border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-3 text-sm font-black text-brand-dark transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323]"
-                >
-                  <span className="inline-flex items-center gap-2">
-                    <Sparkles className="h-4 w-4" />
-                    {labels.viewProfile}
-                  </span>
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
               </motion.article>
             );
           })}
