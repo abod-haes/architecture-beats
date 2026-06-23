@@ -1,3 +1,5 @@
+import TeamsPageClient from "./TeamsPageClient";
+
 export default function TeamsPage() {
-  return null;
+  return <TeamsPageClient />;
 }
