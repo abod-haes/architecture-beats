@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Project coordinator profile illustration</title>
+  <desc id="desc">Professional project coordinator avatar with planning and client communication details.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5eee2"/><stop offset="1" stop-color="#d2bd9e"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9bc843"/><stop offset="1" stop-color="#597d19"/></linearGradient>
+    <clipPath id="circle"><circle cx="450" cy="430" r="255"/></clipPath>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)"/>
+  <path d="M100 250h700M100 450h700M100 650h700M250 100v700M450 100v700M650 100v700" stroke="#242820" stroke-opacity=".06" stroke-width="2"/>
+  <circle cx="450" cy="430" r="292" fill="#fffaf0" opacity=".72"/>
+  <g clip-path="url(#circle)">
+    <rect x="160" y="175" width="580" height="560" fill="#eadbc2"/>
+    <path d="M160 648c82-117 180-176 292-176s208 59 288 176v120H160Z" fill="#20241f"/>
+    <path d="M306 676c25-70 72-105 144-105s120 35 146 105l-146 65Z" fill="url(#accent)"/>
+    <path d="M317 380c-5-89 48-154 133-154s138 65 133 154l-20 107c-10 58-58 101-113 101s-103-43-113-101Z" fill="#b9825d"/>
+    <path d="M306 365c22-91 78-139 149-139 74 0 123 43 144 128-39-15-77-17-115-5-48 15-91 7-130-25-18 12-34 26-48 41Z" fill="#211b17"/>
+    <path d="M295 398c-27-7-47 15-35 51 7 21 23 36 45 39Zm310 0c27-7 47 15 35 51-7 21-23 36-45 39Z" fill="#b9825d"/>
+    <path d="M369 491c35 32 87 32 122 0" fill="none" stroke="#573325" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g fill="none" stroke="#6c901d" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+    <path d="M145 645h190v126H145Z"/>
+    <path d="M176 680h90M176 714h126"/>
+    <path d="M660 190h95v68h-95Z"/>
+    <path d="M660 190l48 42 47-42"/>
+  </g>
+  <g fill="#8fb63e" opacity=".86">
+    <circle cx="640" cy="704" r="18"/><circle cx="696" cy="704" r="18"/><circle cx="752" cy="704" r="18"/>
+  </g>
+  <rect x="72" y="72" width="756" height="756" fill="none" stroke="#2d3028" stroke-opacity=".16" stroke-width="3"/>
+</svg>
