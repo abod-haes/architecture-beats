@@ -1,18 +1,36 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Menu, X } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 import GlowButton from "../ui/GlowButton";
 import LanguageToggle from "./LanguageToggle";
 import ThemeToggle from "./ThemeToggle";
 import { useLocale } from "@/context/LocaleContext";
+import type { NavItem } from "@/data/siteData";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { content, locale, toggleLocale, dir } = useLocale();
+
+  const navItems = useMemo<NavItem[]>(() => {
+    const teamItem: NavItem = { label: locale === "ar" ? "الفريق" : "Team", href: "/teams" };
+
+    if (content.nav.some((item) => item.href === teamItem.href)) {
+      return content.nav;
+    }
+
+    const contactIndex = content.nav.findIndex((item) => item.href === "/contact");
+    if (contactIndex === -1) {
+      return [...content.nav, teamItem];
+    }
+
+    return [...content.nav.slice(0, contactIndex), teamItem, ...content.nav.slice(contactIndex)];
+  }, [content.nav, locale]);
+
+  const contactItem = navItems.find((item) => item.href === "/contact") ?? navItems[navItems.length - 1];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
@@ -31,8 +49,8 @@ export default function Navbar() {
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-7 md:flex">
-            {content.nav.map((item) => (
+          <nav className="hidden items-center gap-6 md:flex">
+            {navItems.map((item) => (
               <Link key={item.href} href={item.href} className="text-sm font-bold text-brand-dark transition hover:text-brand-secondary">
                 {item.label}
               </Link>
@@ -42,10 +60,10 @@ export default function Navbar() {
           <div className="hidden items-center gap-3 md:flex">
             <ThemeToggle locale={locale} />
             <LanguageToggle locale={locale} onToggle={toggleLocale} />
-            <GlowButton label={content.nav[4].label} href={content.nav[4].href} className="px-5 py-2.5" />
+            <GlowButton label={contactItem.label} href={contactItem.href} className="px-5 py-2.5" />
           </div>
 
-          <button onClick={() => setOpen((v) => !v)} className="border border-[var(--site-border)] bg-[var(--site-card)] p-2 text-brand-dark md:hidden" aria-label={content.nav[4].label}>
+          <button onClick={() => setOpen((v) => !v)} className="border border-[var(--site-border)] bg-[var(--site-card)] p-2 text-brand-dark md:hidden" aria-label={contactItem.label}>
             {open ? <X /> : <Menu />}
           </button>
         </div>
@@ -53,9 +71,9 @@ export default function Navbar() {
       <div className="relative md:hidden">
         <MobileMenu
           open={open}
-          nav={content.nav}
-          contactHref={content.nav[4].href}
-          contactLabel={content.nav[4].label}
+          nav={navItems}
+          contactHref={contactItem.href}
+          contactLabel={contactItem.label}
           locale={locale}
           onLanguageToggle={toggleLocale}
           onClose={() => setOpen(false)}
