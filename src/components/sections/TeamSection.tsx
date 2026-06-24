@@ -154,7 +154,7 @@ export default function TeamSection() {
             type="button"
             onClick={() => scrollSlider("prev")}
             data-cursor="active"
-            className="absolute left-2 top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323] sm:left-3 sm:h-11 sm:w-11"
+            className="absolute left-2 top-1/2 z-50 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323] sm:left-3 sm:h-11 sm:w-11"
             aria-label={sliderLabels.previous}
           >
             <ArrowLeft className="h-4 w-4" />
@@ -164,7 +164,7 @@ export default function TeamSection() {
             type="button"
             onClick={() => scrollSlider("next")}
             data-cursor="active"
-            className="absolute right-2 top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323] sm:right-3 sm:h-11 sm:w-11"
+            className="absolute right-2 top-1/2 z-50 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323] sm:right-3 sm:h-11 sm:w-11"
             aria-label={sliderLabels.next}
           >
             <ArrowRight className="h-4 w-4" />
