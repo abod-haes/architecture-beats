@@ -50,7 +50,7 @@ export default function TeamsPageClient() {
                 </Link>
 
                 <div className="blueprint-grid absolute inset-0 opacity-35" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_12%,rgba(166,214,50,0.24),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.12),rgba(0,0,0,0.22))]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_12%,rgba(166,214,50,0.22),transparent_36%)]" />
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -59,37 +59,40 @@ export default function TeamsPageClient() {
                   className="object-contain object-bottom px-4 pt-6 transition duration-700 group-hover:scale-[1.035] sm:px-7 sm:pt-8"
                 />
 
-                <div className="pointer-events-none absolute start-4 top-4 z-20 grid h-12 w-12 place-items-center border border-brand-primary bg-[var(--site-card)] text-brand-dark shadow-[0_14px_34px_var(--site-shadow)] backdrop-blur transition group-hover:bg-brand-primary group-hover:text-[#232323]">
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[68%] bg-gradient-to-t from-[#080a05]/92 via-[#080a05]/46 to-transparent transition duration-500 group-hover:h-[74%]" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-28 bg-gradient-to-t from-brand-primary/30 to-transparent opacity-80" />
+
+                <div className="pointer-events-none absolute start-4 top-4 z-20 grid h-12 w-12 place-items-center border border-brand-primary/70 bg-black/25 text-white shadow-[0_14px_34px_rgba(0,0,0,0.25)] backdrop-blur-md transition group-hover:bg-brand-primary group-hover:text-[#232323]">
                   <Icon className="h-6 w-6" />
                 </div>
 
                 <div className="pointer-events-none absolute end-4 top-4 z-20 flex max-w-[70%] flex-wrap justify-end gap-2">
                   {member.badges.slice(0, 2).map((badge) => (
-                    <span key={badge} className="border border-white/25 bg-black/30 px-2.5 py-1 text-[0.65rem] font-black text-white backdrop-blur">
+                    <span key={badge} className="border border-white/25 bg-black/25 px-2.5 py-1 text-[0.65rem] font-black text-white shadow-lg backdrop-blur-md">
                       {badge}
                     </span>
                   ))}
                 </div>
 
-                <div className="pointer-events-none absolute inset-x-3 bottom-3 z-20 border border-white/20 bg-brand-primary/90 p-4 text-[#232323] shadow-[0_18px_45px_rgba(0,0,0,0.22)] backdrop-blur-xl transition group-hover:bg-brand-primary sm:inset-x-4 sm:bottom-4 sm:p-5">
+                <div className="pointer-events-none absolute inset-x-3 bottom-3 z-20 border border-white/15 bg-white/10 p-4 text-white shadow-[0_-20px_70px_rgba(0,0,0,0.46)] backdrop-blur-xl transition group-hover:border-brand-primary/45 group-hover:bg-white/14 sm:inset-x-4 sm:bottom-4 sm:p-5">
                   <div className="mb-3 flex items-center justify-between gap-4">
-                    <span className="h-px w-16 bg-[#232323]/40" />
-                    <span className="inline-flex items-center gap-2 text-xs font-black text-[#33420f]">
+                    <span className="h-px w-16 bg-brand-primary" />
+                    <span className="inline-flex items-center gap-2 text-xs font-black text-brand-primary">
                       <MapPin className="h-3.5 w-3.5" />
                       {member.location}
                     </span>
                   </div>
-                  <h1 className="text-2xl font-black leading-tight">{member.name}</h1>
-                  <p className="mt-1 text-sm font-black text-[#33420f]">{member.jobTitle}</p>
-                  <p className="mt-3 line-clamp-3 leading-7 text-[#232323]/80">{member.summary}</p>
+                  <h1 className="text-2xl font-black leading-tight drop-shadow">{member.name}</h1>
+                  <p className="mt-1 text-sm font-black text-brand-primary">{member.jobTitle}</p>
+                  <p className="mt-3 line-clamp-3 leading-7 text-white/82">{member.summary}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {member.skills.slice(0, 3).map((skill) => (
-                      <span key={skill} className="border border-[#232323]/20 bg-white/20 px-2.5 py-1 text-xs font-black text-[#232323] backdrop-blur">
+                      <span key={skill} className="border border-white/18 bg-white/10 px-2.5 py-1 text-xs font-black text-white backdrop-blur-md">
                         {skill}
                       </span>
                     ))}
                   </div>
-                  <div className="mt-5 inline-flex items-center gap-2 text-sm font-black">
+                  <div className="mt-5 inline-flex items-center gap-2 text-sm font-black text-brand-primary">
                     <Sparkles className="h-4 w-4" />
                     {labels.viewProfile}
                     <ArrowUpRight className="h-4 w-4" />
