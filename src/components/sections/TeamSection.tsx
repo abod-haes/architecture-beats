@@ -61,7 +61,7 @@ export default function TeamSection() {
                 </Link>
 
                 <div className="blueprint-grid absolute inset-0 opacity-35" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_12%,rgba(166,214,50,0.22),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.10),rgba(0,0,0,0.16))]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_12%,rgba(166,214,50,0.2),transparent_36%)]" />
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -70,17 +70,20 @@ export default function TeamSection() {
                   className="object-contain object-bottom px-4 pt-5 transition duration-700 group-hover:scale-[1.035] sm:px-6 sm:pt-7"
                 />
 
-                <div className="pointer-events-none absolute start-4 top-4 z-10 grid h-11 w-11 place-items-center border border-brand-primary bg-[var(--site-card)] text-brand-dark shadow-[0_12px_30px_var(--site-shadow)] backdrop-blur transition group-hover:bg-brand-primary group-hover:text-[#232323]">
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[64%] bg-gradient-to-t from-[#080a05]/90 via-[#080a05]/42 to-transparent transition duration-500 group-hover:h-[70%]" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-brand-primary/30 to-transparent opacity-80" />
+
+                <div className="pointer-events-none absolute start-4 top-4 z-20 grid h-11 w-11 place-items-center border border-brand-primary/70 bg-black/25 text-white shadow-[0_12px_30px_rgba(0,0,0,0.25)] backdrop-blur-md transition group-hover:bg-brand-primary group-hover:text-[#232323]">
                   <Icon className="h-5 w-5" />
                 </div>
 
-                <div className="pointer-events-none absolute inset-x-3 bottom-3 z-10 border border-white/20 bg-brand-primary/90 p-4 text-[#232323] shadow-[0_18px_45px_rgba(0,0,0,0.22)] backdrop-blur-xl transition group-hover:bg-brand-primary sm:inset-x-4 sm:bottom-4 sm:p-5">
-                  <div className="mb-3 h-px w-16 bg-[#232323]/40" />
-                  <p className="text-xl font-black leading-tight sm:text-2xl">{member.name}</p>
-                  <p className="mt-1 text-sm font-black text-[#33420f]">{member.position}</p>
-                  <p className="mt-2 text-[0.68rem] font-black uppercase tracking-[0.2em] text-[#232323]/70">{member.jobTitle}</p>
-                  <p className="mt-3 text-sm leading-6 text-[#232323]/80">{summary}</p>
-                  <div className="mt-4 inline-flex items-center gap-2 text-sm font-black">
+                <div className="pointer-events-none absolute inset-x-3 bottom-3 z-20 border border-white/15 bg-white/10 p-4 text-white shadow-[0_-18px_65px_rgba(0,0,0,0.42)] backdrop-blur-xl transition group-hover:border-brand-primary/45 group-hover:bg-white/14 sm:inset-x-4 sm:bottom-4 sm:p-5">
+                  <div className="mb-3 h-px w-16 bg-brand-primary" />
+                  <p className="text-xl font-black leading-tight drop-shadow sm:text-2xl">{member.name}</p>
+                  <p className="mt-1 text-sm font-black text-brand-primary">{member.position}</p>
+                  <p className="mt-2 text-[0.68rem] font-black uppercase tracking-[0.2em] text-white/70">{member.jobTitle}</p>
+                  <p className="mt-3 text-sm leading-6 text-white/82">{summary}</p>
+                  <div className="mt-4 inline-flex items-center gap-2 text-sm font-black text-brand-primary">
                     {labels.viewProfile}
                     <ArrowUpRight className="h-4 w-4" />
                   </div>
