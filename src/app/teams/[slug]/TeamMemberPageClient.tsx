@@ -75,17 +75,17 @@ export default function TeamMemberPageClient({ slug }: { slug: string }) {
             <div className="absolute start-4 top-4 z-10 flex h-14 w-14 items-center justify-center border border-brand-primary bg-[var(--site-card)] text-brand-dark shadow-[0_14px_34px_var(--site-shadow)] backdrop-blur">
               <Icon className="h-7 w-7" />
             </div>
-            <div className="absolute inset-x-4 bottom-4 z-10 border border-white/20 bg-brand-primary/85 p-5 text-[#232323] shadow-[0_18px_45px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:inset-x-6 sm:bottom-6 sm:p-6">
+            <div className="absolute inset-x-4 bottom-4 z-10 border border-white/20 bg-brand-primary/90 p-5 text-[#232323] shadow-[0_18px_45px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:inset-x-6 sm:bottom-6 sm:p-6">
               <p className="text-xs font-black uppercase tracking-[0.25em] text-[#33420f]">{member.position}</p>
               <h1 className="mt-3 text-4xl font-black leading-tight sm:text-5xl">{member.name}</h1>
               <p className="mt-3 text-lg font-black text-[#33420f]">{member.jobTitle}</p>
-              <p className="mt-4 flex items-center gap-2 text-[#232323]/82">
+              <p className="mt-4 flex items-center gap-2 text-[#232323]/80">
                 <MapPin className="h-4 w-4 text-[#33420f]" />
                 {member.location}
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {member.badges.map((badge) => (
-                  <span key={badge} className="border border-[#232323]/20 bg-white/18 px-3 py-1.5 text-xs font-black text-[#232323] backdrop-blur">
+                  <span key={badge} className="border border-[#232323]/20 bg-white/20 px-3 py-1.5 text-xs font-black text-[#232323] backdrop-blur">
                     {badge}
                   </span>
                 ))}
