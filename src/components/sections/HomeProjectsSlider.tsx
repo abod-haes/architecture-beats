@@ -177,7 +177,7 @@ export default function HomeProjectsSlider() {
             onPointerUp={stopDrag}
             onPointerCancel={stopDrag}
             onClickCapture={handleSliderClick}
-            className="slider-scroll flex max-w-full snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden scroll-smooth px-14 py-2 sm:gap-5 sm:px-16"
+            className="slider-scroll flex max-w-full snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden scroll-smooth px-14 py-2 select-none cursor-grab active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-5 sm:px-16"
           >
             {content.projects.map((project, index) => (
               <div key={project.title} dir={dir} className="w-[82%] min-w-0 shrink-0 snap-start sm:w-[26rem] lg:w-[26rem]">
