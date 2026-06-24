@@ -65,7 +65,7 @@ function FullPageLoader() {
   const progress = locale === "ar" ? "تحميل العناصر" : "Loading assets";
 
   return (
-    <div className="fixed inset-0 z-[9999] flex min-h-screen items-center justify-center overflow-hidden bg-[var(--site-bg)] px-5 text-[var(--site-text)]" dir={dir} role="status" aria-live="polite">
+    <div className="fixed inset-0 z-[9999] flex min-h-dvh w-screen max-w-full items-center justify-center overflow-hidden bg-[var(--site-bg)] px-5 text-[var(--site-text)]" dir={dir} role="status" aria-live="polite">
       <div className="blueprint-grid absolute inset-0 opacity-60" />
       <div className="absolute -top-32 h-80 w-80 rounded-full bg-brand-primary/20 blur-3xl" />
       <div className="absolute bottom-0 start-0 h-72 w-72 rounded-full bg-brand-primary/10 blur-3xl" />
@@ -110,6 +110,18 @@ export default function PageLoadGate({ children }: { children: ReactNode }) {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    document.documentElement.classList.toggle("is-page-loading", !isReady);
+    document.body.classList.toggle("is-page-loading", !isReady);
+
+    return () => {
+      document.documentElement.classList.remove("is-page-loading");
+      document.body.classList.remove("is-page-loading");
+    };
+  }, [isReady]);
+
+  useEffect(() => {
     let isCancelled = false;
     const startedAt = performance.now();
 
@@ -142,7 +154,7 @@ export default function PageLoadGate({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <div className={`transition-[opacity,filter] duration-700 ${isReady ? "opacity-100 blur-0" : "pointer-events-none opacity-0 blur-sm"}`} aria-busy={!isReady}>
+      <div className={`max-w-full overflow-x-clip transition-[opacity,filter] duration-700 ${isReady ? "opacity-100 blur-0" : "pointer-events-none opacity-0 blur-sm"}`} aria-busy={!isReady}>
         {children}
       </div>
       {!isReady ? <FullPageLoader /> : null}
