@@ -50,7 +50,6 @@ export default function ThemeToggle({ locale, className }: Props) {
           )}
         />
       </span>
-      <span className={cn("min-w-9 text-center text-[var(--site-text)] transition group-hover:text-brand-primary", isArabic ? "tracking-normal" : "uppercase tracking-[0.14em]")}>{currentLabel}</span>
     </button>
   );
 }

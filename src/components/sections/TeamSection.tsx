@@ -54,11 +54,11 @@ export default function TeamSection() {
                 variants={fadeUp}
                 whileHover={{ y: -7, scale: 1.01 }}
                 data-cursor="active"
-                className="group relative flex aspect-[4/5] min-h-full flex-col overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)] backdrop-blur transition hover:border-brand-primary"
+                className="group relative flex aspect-[5/4] min-h-full flex-col overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)] backdrop-blur transition hover:border-brand-primary"
               >
                 <div className="pointer-events-none absolute -end-10 -top-10 h-28 w-28 border border-brand-primary/30 bg-[var(--site-accent-soft)] transition group-hover:scale-110" />
 
-                <div className="relative flex-[1.1] overflow-hidden border-b border-[var(--site-border-strong)] bg-[var(--site-muted)]">
+                <div className="relative flex-[1] overflow-hidden border-b border-[var(--site-border-strong)] bg-[var(--site-muted)]">
                   <div className="relative h-full w-full">
                     <Image
                       src={member.image}
@@ -74,12 +74,12 @@ export default function TeamSection() {
                   <BadgeCheck className="absolute end-3 top-3 h-5 w-5 text-brand-secondary" />
                 </div>
 
-                <div className="relative flex flex-1 flex-col justify-between gap-4 p-4 sm:p-5">
+                <div className="relative flex flex-1 flex-col justify-between gap-3 p-4 sm:p-5">
                   <div>
-                    <p className="text-xl font-black leading-tight text-brand-dark">{member.name}</p>
-                    <p className="mt-2 text-sm font-bold text-brand-secondary">{member.position}</p>
-                    <p className="mt-1 text-sm leading-7 text-brand-gray">{member.jobTitle}</p>
-                    <p className="mt-4 text-sm leading-7 text-brand-gray">{summary}</p>
+                    <p className="text-lg font-black leading-tight text-brand-dark sm:text-xl">{member.name}</p>
+                    <p className="mt-1 text-sm font-bold text-brand-secondary">{member.position}</p>
+                    <p className="mt-1 text-xs uppercase tracking-[0.2em] text-brand-gray/80">{member.jobTitle}</p>
+                    <p className="mt-3 text-sm leading-6 text-brand-gray">{summary}</p>
                   </div>
                   <Link
                     href={`/teams/${member.slug}`}

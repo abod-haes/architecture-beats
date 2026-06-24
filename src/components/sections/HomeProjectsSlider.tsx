@@ -180,7 +180,7 @@ export default function HomeProjectsSlider() {
             className="flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden scroll-smooth px-1 py-2 [scrollbar-width:none] sm:gap-5 sm:px-3 [&::-webkit-scrollbar]:hidden"
           >
             {content.projects.map((project, index) => (
-              <div key={project.title} dir={dir} className="w-[86%] shrink-0 snap-start sm:w-[26rem] lg:w-[28rem]">
+              <div key={project.title} dir={dir} className="w-[86%] shrink-0 snap-start sm:w-[26rem] lg:w-[26rem]">
                 <ProjectCard
                   project={project}
                   labels={content.texts.projectLabels}
