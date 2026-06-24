@@ -134,8 +134,51 @@ export default function TeamSection() {
           </Link>
         </div>
 
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.12 }} variants={staggerContainer} className="mt-8 grid gap-4 sm:hidden">
+          {members.map((member) => {
+            const Icon = icons[member.slug];
+
+            return (
+              <motion.article
+                key={member.slug}
+                dir={dir}
+                variants={fadeUp}
+                whileTap={{ scale: 0.99 }}
+                data-cursor="active"
+                className="group relative min-h-[360px] w-full overflow-hidden border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] shadow-[0_18px_48px_var(--site-shadow)] transition hover:border-brand-primary"
+              >
+                <Link href={`/teams/${member.slug}`} className="absolute inset-0 z-30" aria-label={member.name}>
+                  <span className="sr-only">{labels.viewProfile}</span>
+                </Link>
+
+                <div className="blueprint-grid absolute inset-0 opacity-30" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_12%,rgba(166,214,50,0.18),transparent_36%)]" />
+                <Image src={member.image} alt={member.name} fill sizes="92vw" className="object-cover object-top transition duration-700 group-hover:scale-[1.03]" />
+
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[56%] bg-gradient-to-t from-[#080a05]/94 via-[#080a05]/48 to-transparent transition duration-500" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-brand-primary/22 to-transparent opacity-75" />
+
+                <div className="pointer-events-none absolute start-3 top-3 z-20 grid h-9 w-9 place-items-center border border-brand-primary/70 bg-black/25 text-white shadow-[0_12px_30px_rgba(0,0,0,0.25)] backdrop-blur-md transition group-hover:bg-brand-primary group-hover:text-[#232323]">
+                  <Icon className="h-4 w-4" />
+                </div>
+
+                <div className="pointer-events-none absolute inset-x-3 bottom-3 z-20 border border-white/15 bg-white/10 p-3 text-white shadow-[0_-18px_65px_rgba(0,0,0,0.42)] backdrop-blur-xl transition group-hover:border-brand-primary/45 group-hover:bg-white/14">
+                  <div className="mb-2 h-px w-12 bg-brand-primary" />
+                  <p className="text-xl font-black leading-tight drop-shadow">{member.name}</p>
+                  <p className="mt-1 text-xs font-black text-brand-primary">{member.position}</p>
+                  <p className="mt-1.5 text-[0.58rem] font-black uppercase tracking-[0.16em] text-white/72">{member.jobTitle}</p>
+                  <div className="mt-3 inline-flex items-center gap-2 text-xs font-black text-brand-primary">
+                    {labels.viewProfile}
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </div>
+                </div>
+              </motion.article>
+            );
+          })}
+        </motion.div>
+
         <div
-          className="slider-shell relative mt-8 sm:mt-10"
+          className="slider-shell relative mt-10 hidden sm:block"
           onMouseEnter={() => {
             autoPausedRef.current = true;
           }}
@@ -154,7 +197,7 @@ export default function TeamSection() {
             type="button"
             onClick={() => scrollSlider("prev")}
             data-cursor="active"
-            className="absolute left-2 top-1/2 z-50 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323] sm:left-3 sm:h-11 sm:w-11"
+            className="absolute left-3 top-1/2 z-50 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323]"
             aria-label={sliderLabels.previous}
           >
             <ArrowLeft className="h-4 w-4" />
@@ -164,7 +207,7 @@ export default function TeamSection() {
             type="button"
             onClick={() => scrollSlider("next")}
             data-cursor="active"
-            className="absolute right-2 top-1/2 z-50 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323] sm:right-3 sm:h-11 sm:w-11"
+            className="absolute right-3 top-1/2 z-50 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323]"
             aria-label={sliderLabels.next}
           >
             <ArrowRight className="h-4 w-4" />
@@ -182,7 +225,7 @@ export default function TeamSection() {
             onPointerUp={stopDrag}
             onPointerCancel={stopDrag}
             onClickCapture={handleSliderClick}
-            className="slider-scroll flex max-w-full snap-x snap-mandatory gap-3 overflow-x-auto overflow-y-hidden scroll-smooth px-12 py-2 select-none cursor-grab active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-5 sm:px-16"
+            className="slider-scroll flex max-w-full snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-hidden scroll-smooth px-16 py-2 select-none cursor-grab active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {members.map((member) => {
               const Icon = icons[member.slug];
@@ -195,7 +238,7 @@ export default function TeamSection() {
                   variants={fadeUp}
                   whileHover={{ y: -8, scale: 1.01 }}
                   data-cursor="active"
-                  className="group relative min-h-[390px] w-[78%] shrink-0 snap-start overflow-hidden border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] shadow-[0_18px_48px_var(--site-shadow)] transition hover:border-brand-primary sm:min-h-[520px] sm:w-[26rem] lg:w-[27rem]"
+                  className="group relative min-h-[520px] w-[26rem] shrink-0 snap-start overflow-hidden border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] shadow-[0_18px_48px_var(--site-shadow)] transition hover:border-brand-primary lg:w-[27rem]"
                 >
                   <Link href={`/teams/${member.slug}`} className="absolute inset-0 z-30" aria-label={member.name}>
                     <span className="sr-only">{labels.viewProfile}</span>
@@ -207,26 +250,26 @@ export default function TeamSection() {
                     src={member.image}
                     alt={member.name}
                     fill
-                    sizes="(min-width: 1280px) 27rem, (min-width: 768px) 26rem, 78vw"
+                    sizes="(min-width: 1280px) 27rem, 26rem"
                     className="object-cover object-top transition duration-700 group-hover:scale-[1.035]"
                   />
 
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[50%] bg-gradient-to-t from-[#080a05]/92 via-[#080a05]/42 to-transparent transition duration-500 group-hover:h-[62%] sm:h-[64%] sm:group-hover:h-[70%]" />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-brand-primary/24 to-transparent opacity-75 sm:h-24 sm:from-brand-primary/30" />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[64%] bg-gradient-to-t from-[#080a05]/92 via-[#080a05]/42 to-transparent transition duration-500 group-hover:h-[70%]" />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-brand-primary/30 to-transparent opacity-75" />
 
-                  <div className="pointer-events-none absolute start-3 top-3 z-20 grid h-9 w-9 place-items-center border border-brand-primary/70 bg-black/25 text-white shadow-[0_12px_30px_rgba(0,0,0,0.25)] backdrop-blur-md transition group-hover:bg-brand-primary group-hover:text-[#232323] sm:start-4 sm:top-4 sm:h-11 sm:w-11">
-                    <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <div className="pointer-events-none absolute start-4 top-4 z-20 grid h-11 w-11 place-items-center border border-brand-primary/70 bg-black/25 text-white shadow-[0_12px_30px_rgba(0,0,0,0.25)] backdrop-blur-md transition group-hover:bg-brand-primary group-hover:text-[#232323]">
+                    <Icon className="h-5 w-5" />
                   </div>
 
-                  <div className="pointer-events-none absolute inset-x-2.5 bottom-2.5 z-20 border border-white/15 bg-white/10 p-3 text-white shadow-[0_-18px_65px_rgba(0,0,0,0.42)] backdrop-blur-xl transition group-hover:border-brand-primary/45 group-hover:bg-white/14 sm:inset-x-4 sm:bottom-4 sm:p-5">
-                    <div className="mb-2 h-px w-12 bg-brand-primary sm:mb-3 sm:w-16" />
-                    <p className="text-lg font-black leading-tight drop-shadow sm:text-2xl">{member.name}</p>
-                    <p className="mt-1 text-xs font-black text-brand-primary sm:text-sm">{member.position}</p>
-                    <p className="mt-1.5 text-[0.58rem] font-black uppercase tracking-[0.17em] text-white/70 sm:mt-2 sm:text-[0.68rem] sm:tracking-[0.2em]">{member.jobTitle}</p>
-                    <p className="mt-3 hidden text-sm leading-6 text-white/82 sm:block">{summary}</p>
-                    <div className="mt-3 inline-flex items-center gap-2 text-xs font-black text-brand-primary sm:mt-4 sm:text-sm">
+                  <div className="pointer-events-none absolute inset-x-4 bottom-4 z-20 border border-white/15 bg-white/10 p-5 text-white shadow-[0_-18px_65px_rgba(0,0,0,0.42)] backdrop-blur-xl transition group-hover:border-brand-primary/45 group-hover:bg-white/14">
+                    <div className="mb-3 h-px w-16 bg-brand-primary" />
+                    <p className="text-2xl font-black leading-tight drop-shadow">{member.name}</p>
+                    <p className="mt-1 text-sm font-black text-brand-primary">{member.position}</p>
+                    <p className="mt-2 text-[0.68rem] font-black uppercase tracking-[0.2em] text-white/70">{member.jobTitle}</p>
+                    <p className="mt-3 text-sm leading-6 text-white/82">{summary}</p>
+                    <div className="mt-4 inline-flex items-center gap-2 text-sm font-black text-brand-primary">
                       {labels.viewProfile}
-                      <ArrowUpRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                      <ArrowUpRight className="h-4 w-4" />
                     </div>
                   </div>
                 </motion.article>
