@@ -243,8 +243,6 @@ body {
   border-radius: 999px;
 }
 
-
-
 .cursor-reactive {
   cursor: none;
 }
@@ -276,6 +274,38 @@ body {
   }
 }
 
+@keyframes loader-corner {
+  0%, 100% {
+    transform: scale(0.72) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1) rotate(90deg);
+    opacity: 1;
+  }
+}
+
+@keyframes loader-bar {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+.site-loader-corner {
+  animation: loader-corner 1.45s ease-in-out infinite;
+}
+
+.site-loader-bar {
+  animation: loader-bar 1.25s ease-in-out infinite;
+}
+
+html[dir="rtl"] .site-loader-bar {
+  animation-direction: reverse;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .animate-blueprint-drift {
     animation: blueprint-drift 18s ease-in-out infinite;
@@ -283,5 +313,12 @@ body {
 
   .animate-site-float {
     animation: site-float 7s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-loader-corner,
+  .site-loader-bar {
+    animation: none;
   }
 }

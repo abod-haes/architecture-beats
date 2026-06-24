@@ -53,7 +53,15 @@ export default function Hero() {
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             className="brand-media-frame relative"
           >
-            <Image src="/hero-architecture.jpg" alt={content.hero.title} width={1600} height={1067} priority className="h-[360px] w-full object-cover sm:h-[460px] lg:h-[540px]" />
+            <Image
+              src="/hero-architecture.jpg"
+              alt={content.hero.title}
+              width={1600}
+              height={1067}
+              priority
+              data-critical="true"
+              className="h-[360px] w-full object-cover sm:h-[460px] lg:h-[540px]"
+            />
             <div className="absolute start-4 top-4 z-10 flex items-center gap-3 border border-[var(--site-inverse-border)] bg-[var(--site-inverse)] px-4 py-3 text-[var(--site-inverse-text)] backdrop-blur sm:start-6 sm:top-6">
               <DraftingCompass className="h-6 w-6 text-brand-primary" />
               <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-primary sm:text-sm">{content.company.nameEn}</p>
