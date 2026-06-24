@@ -46,6 +46,7 @@ export default function TeamSection() {
         >
           {members.map((member) => {
             const Icon = icons[member.slug];
+            const summary = member.summary.length > 96 ? `${member.summary.slice(0, 96).trimEnd()}...` : member.summary;
 
             return (
               <motion.article
@@ -53,12 +54,12 @@ export default function TeamSection() {
                 variants={fadeUp}
                 whileHover={{ y: -7, scale: 1.01 }}
                 data-cursor="active"
-                className="group relative flex min-h-full flex-col overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)] p-3 backdrop-blur transition hover:border-brand-primary sm:p-4"
+                className="group relative flex aspect-[4/5] min-h-full flex-col overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)] backdrop-blur transition hover:border-brand-primary"
               >
                 <div className="pointer-events-none absolute -end-10 -top-10 h-28 w-28 border border-brand-primary/30 bg-[var(--site-accent-soft)] transition group-hover:scale-110" />
 
-                <div className="relative overflow-hidden border border-[var(--site-border-strong)] bg-[var(--site-muted)]">
-                  <div className="relative aspect-[4/3]">
+                <div className="relative flex-[1.1] overflow-hidden border-b border-[var(--site-border-strong)] bg-[var(--site-muted)]">
+                  <div className="relative h-full w-full">
                     <Image
                       src={member.image}
                       alt={member.name}
@@ -73,22 +74,16 @@ export default function TeamSection() {
                   <BadgeCheck className="absolute end-3 top-3 h-5 w-5 text-brand-secondary" />
                 </div>
 
-                <div className="relative flex flex-1 flex-col p-2 pt-5">
-                  <p className="text-xl font-black text-brand-dark">{member.name}</p>
-                  <div className="mt-4 space-y-2 border-y border-[var(--site-border)] py-4">
-                    <p className="text-sm text-brand-gray">
-                      <span className="font-black text-brand-dark">{labels.position}: </span>
-                      {member.position}
-                    </p>
-                    <p className="text-sm text-brand-gray">
-                      <span className="font-black text-brand-dark">{labels.jobTitle}: </span>
-                      {member.jobTitle}
-                    </p>
+                <div className="relative flex flex-1 flex-col justify-between gap-4 p-4 sm:p-5">
+                  <div>
+                    <p className="text-xl font-black leading-tight text-brand-dark">{member.name}</p>
+                    <p className="mt-2 text-sm font-bold text-brand-secondary">{member.position}</p>
+                    <p className="mt-1 text-sm leading-7 text-brand-gray">{member.jobTitle}</p>
+                    <p className="mt-4 text-sm leading-7 text-brand-gray">{summary}</p>
                   </div>
-                  <p className="mt-4 flex-1 leading-7 text-brand-gray">{member.summary}</p>
                   <Link
                     href={`/teams/${member.slug}`}
-                    className="mt-5 inline-flex items-center justify-between gap-3 border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-3 text-sm font-black text-brand-dark transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323]"
+                    className="inline-flex items-center justify-between gap-3 border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-3 text-sm font-black text-brand-dark transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323]"
                   >
                     {labels.viewProfile}
                     <ArrowUpRight className="h-4 w-4" />
