@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight, BadgeCheck, BriefcaseBusiness, Building2, Code2, HardHat, PenTool } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, Building2, Code2, HardHat, PenTool } from "lucide-react";
 import { useLocale } from "@/context/LocaleContext";
 import { localizedTeamProfiles, teamLabels, type TeamSlug } from "@/data/teamProfiles";
 import SectionTitle from "../ui/SectionTitle";
@@ -46,48 +46,44 @@ export default function TeamSection() {
         >
           {members.map((member) => {
             const Icon = icons[member.slug];
-            const summary = member.summary.length > 74 ? `${member.summary.slice(0, 74).trimEnd()}...` : member.summary;
+            const summary = member.summary.length > 92 ? `${member.summary.slice(0, 92).trimEnd()}...` : member.summary;
 
             return (
               <motion.article
                 key={member.slug}
                 variants={fadeUp}
-                whileHover={{ y: -7, scale: 1.01 }}
+                whileHover={{ y: -8, scale: 1.01 }}
                 data-cursor="active"
-                className="group relative flex aspect-[5/4] min-h-full flex-col overflow-hidden border border-[var(--site-border)] bg-[var(--site-card)] backdrop-blur transition hover:border-brand-primary"
+                className="group relative min-h-[470px] overflow-hidden border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] shadow-[0_18px_48px_var(--site-shadow)] transition hover:border-brand-primary sm:min-h-[520px]"
               >
-                <div className="pointer-events-none absolute -end-10 -top-10 h-28 w-28 border border-brand-primary/30 bg-[var(--site-accent-soft)] transition group-hover:scale-110" />
+                <Link href={`/teams/${member.slug}`} className="absolute inset-0" aria-label={member.name}>
+                  <span className="sr-only">{labels.viewProfile}</span>
+                </Link>
 
-                <div className="relative flex-[1.35] overflow-hidden border-b border-[var(--site-border-strong)] bg-[var(--site-muted)]">
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 92vw"
-                      className="object-cover transition duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="absolute start-3 top-3 flex h-10 w-10 items-center justify-center border border-brand-primary bg-[var(--site-card)] text-brand-dark shadow-[0_12px_30px_var(--site-shadow)] transition group-hover:bg-brand-primary group-hover:text-[#232323]">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <BadgeCheck className="absolute end-3 top-3 h-5 w-5 text-brand-secondary" />
+                <div className="blueprint-grid absolute inset-0 opacity-35" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_12%,rgba(166,214,50,0.22),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.10),rgba(0,0,0,0.16))]" />
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 92vw"
+                  className="object-contain object-bottom px-4 pt-5 transition duration-700 group-hover:scale-[1.035] sm:px-6 sm:pt-7"
+                />
+
+                <div className="absolute start-4 top-4 z-10 grid h-11 w-11 place-items-center border border-brand-primary bg-[var(--site-card)] text-brand-dark shadow-[0_12px_30px_var(--site-shadow)] backdrop-blur transition group-hover:bg-brand-primary group-hover:text-[#232323]">
+                  <Icon className="h-5 w-5" />
                 </div>
 
-                <div className="relative flex flex-[0.85] flex-col justify-between gap-2 p-4 sm:p-5">
-                  <div>
-                    <p className="text-lg font-black leading-tight text-brand-dark sm:text-xl">{member.name}</p>
-                    <p className="mt-1 text-sm font-bold text-brand-secondary">{member.position}</p>
-                    <p className="mt-2 text-xs uppercase tracking-[0.2em] text-brand-gray/80">{member.jobTitle}</p>
-                    <p className="mt-2 text-sm leading-6 text-brand-gray">{summary}</p>
-                  </div>
-                  <Link
-                    href={`/teams/${member.slug}`}
-                    className="inline-flex items-center justify-between gap-3 border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-2.5 text-sm font-black text-brand-dark transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323]"
-                  >
+                <div className="absolute inset-x-3 bottom-3 z-10 border border-white/20 bg-brand-primary/85 p-4 text-[#232323] shadow-[0_18px_45px_rgba(0,0,0,0.22)] backdrop-blur-xl transition group-hover:bg-brand-primary sm:inset-x-4 sm:bottom-4 sm:p-5">
+                  <div className="mb-3 h-px w-16 bg-[#232323]/45" />
+                  <p className="text-xl font-black leading-tight sm:text-2xl">{member.name}</p>
+                  <p className="mt-1 text-sm font-black text-[#33420f]">{member.position}</p>
+                  <p className="mt-2 text-[0.68rem] font-black uppercase tracking-[0.2em] text-[#232323]/70">{member.jobTitle}</p>
+                  <p className="mt-3 text-sm leading-6 text-[#232323]/82">{summary}</p>
+                  <div className="mt-4 inline-flex items-center gap-2 text-sm font-black">
                     {labels.viewProfile}
                     <ArrowUpRight className="h-4 w-4" />
-                  </Link>
+                  </div>
                 </div>
               </motion.article>
             );
