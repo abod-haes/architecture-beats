@@ -1,107 +1,107 @@
 @import "tailwindcss";
 
 :root {
-  --brand-primary: #93b63a;
-  --brand-secondary: #667c23;
+  --brand-primary: #a8e62e;
+  --brand-secondary: #6f8f18;
   --brand-dark: #20231d;
   --brand-gray: #62675c;
   --brand-cream: #efe8da;
   --brand-cream-strong: #fbf5ea;
-  --brand-olive-soft: #e1e8c8;
+  --brand-olive-soft: #e8f3c8;
   --site-bg: #efe8da;
   --site-bg-soft: #e3dac8;
-  --site-surface: rgba(251, 245, 234, 0.88);
+  --site-surface: rgba(251, 245, 234, 0.9);
   --site-surface-strong: #fbf5ea;
-  --site-card: rgba(251, 245, 234, 0.84);
+  --site-card: rgba(251, 245, 234, 0.86);
   --site-card-solid: #fbf5ea;
   --site-muted: rgba(32, 35, 29, 0.06);
-  --site-accent-soft: rgba(147, 182, 58, 0.09);
-  --site-accent-strong: rgba(147, 182, 58, 0.18);
+  --site-accent-soft: rgba(168, 230, 46, 0.07);
+  --site-accent-strong: rgba(168, 230, 46, 0.13);
   --site-text: #20231d;
   --site-text-muted: #62675c;
   --site-border: rgba(32, 35, 29, 0.13);
-  --site-border-strong: rgba(102, 124, 35, 0.28);
+  --site-border-strong: rgba(111, 143, 24, 0.22);
   --site-inverse: #20231d;
   --site-inverse-text: #fbf5ea;
   --site-inverse-muted: rgba(251, 245, 234, 0.08);
-  --site-inverse-border: rgba(147, 182, 58, 0.14);
+  --site-inverse-border: rgba(168, 230, 46, 0.12);
   --site-shadow: rgba(32, 35, 29, 0.13);
   --nav-bg: rgba(239, 232, 218, 0.9);
-  --blueprint-line: rgba(32, 35, 29, 0.07);
+  --blueprint-line: rgba(32, 35, 29, 0.065);
   --section-hero-bg: #ece4d5;
   --section-panel-bg: #e7decf;
-  --section-panel-soft: rgba(147, 182, 58, 0.07);
+  --section-panel-soft: rgba(168, 230, 46, 0.045);
   --section-accent-bg: #dcd3bf;
   --media-overlay-strong: rgba(32, 35, 29, 0.74);
-  --media-overlay-soft: rgba(147, 182, 58, 0.11);
+  --media-overlay-soft: rgba(168, 230, 46, 0.075);
   --footer-bg: #20231d;
   --footer-bg-soft: #272d20;
   --footer-text: #fbf5ea;
   --footer-muted: rgba(251, 245, 234, 0.7);
-  --footer-border: rgba(147, 182, 58, 0.17);
+  --footer-border: rgba(168, 230, 46, 0.12);
   --cta-bg: #20231d;
   --cta-bg-soft: #2a3020;
   --cta-text: #fbf5ea;
   --cta-muted: rgba(251, 245, 234, 0.76);
-  --cta-border: rgba(147, 182, 58, 0.28);
-  --cta-glow: rgba(147, 182, 58, 0.18);
+  --cta-border: rgba(168, 230, 46, 0.22);
+  --cta-glow: rgba(168, 230, 46, 0.12);
   --cursor-ring: rgba(32, 35, 29, 0.52);
-  --cursor-ring-active: rgba(147, 182, 58, 0.78);
-  --cursor-active-fill: rgba(147, 182, 58, 0.1);
-  --cursor-dot: #667c23;
-  --cursor-shadow: rgba(102, 124, 35, 0.22);
+  --cursor-ring-active: rgba(168, 230, 46, 0.92);
+  --cursor-active-fill: rgba(168, 230, 46, 0.08);
+  --cursor-dot: #6f8f18;
+  --cursor-shadow: rgba(111, 143, 24, 0.2);
 }
 
 :root[data-theme="dark"] {
-  --brand-primary: #9fbd4a;
-  --brand-secondary: #c4d889;
+  --brand-primary: #a8e62e;
+  --brand-secondary: #bff13c;
   --brand-dark: #f4efe4;
   --brand-gray: #aaa89d;
   --brand-cream: #20231d;
   --brand-cream-strong: #272c21;
-  --brand-olive-soft: #303624;
+  --brand-olive-soft: #303b20;
   --site-bg: #20231d;
   --site-bg-soft: #293021;
-  --site-surface: rgba(12, 14, 10, 0.64);
+  --site-surface: rgba(12, 14, 10, 0.66);
   --site-surface-strong: #272c21;
   --site-card: rgba(255, 255, 255, 0.055);
   --site-card-solid: #252a1f;
-  --site-muted: rgba(159, 189, 74, 0.055);
-  --site-accent-soft: rgba(159, 189, 74, 0.08);
-  --site-accent-strong: rgba(159, 189, 74, 0.15);
+  --site-muted: rgba(168, 230, 46, 0.045);
+  --site-accent-soft: rgba(168, 230, 46, 0.065);
+  --site-accent-strong: rgba(168, 230, 46, 0.11);
   --site-text: #f4efe4;
   --site-text-muted: #aaa89d;
   --site-border: rgba(244, 239, 228, 0.1);
-  --site-border-strong: rgba(159, 189, 74, 0.24);
+  --site-border-strong: rgba(168, 230, 46, 0.2);
   --site-inverse: #f4efe4;
   --site-inverse-text: #20231d;
   --site-inverse-muted: rgba(32, 35, 29, 0.08);
   --site-inverse-border: rgba(32, 35, 29, 0.14);
   --site-shadow: rgba(0, 0, 0, 0.42);
   --nav-bg: rgba(32, 35, 29, 0.84);
-  --blueprint-line: rgba(159, 189, 74, 0.065);
+  --blueprint-line: rgba(168, 230, 46, 0.045);
   --section-hero-bg: #20231d;
   --section-panel-bg: #252b20;
-  --section-panel-soft: rgba(159, 189, 74, 0.055);
+  --section-panel-soft: rgba(168, 230, 46, 0.04);
   --section-accent-bg: #293021;
   --media-overlay-strong: rgba(0, 0, 0, 0.76);
-  --media-overlay-soft: rgba(159, 189, 74, 0.09);
+  --media-overlay-soft: rgba(168, 230, 46, 0.06);
   --footer-bg: #171a13;
   --footer-bg-soft: #20261a;
   --footer-text: #f4efe4;
   --footer-muted: rgba(244, 239, 228, 0.7);
-  --footer-border: rgba(159, 189, 74, 0.16);
+  --footer-border: rgba(168, 230, 46, 0.12);
   --cta-bg: #1b1f17;
   --cta-bg-soft: #282f20;
   --cta-text: #f4efe4;
   --cta-muted: rgba(244, 239, 228, 0.76);
-  --cta-border: rgba(159, 189, 74, 0.24);
-  --cta-glow: rgba(159, 189, 74, 0.16);
+  --cta-border: rgba(168, 230, 46, 0.2);
+  --cta-glow: rgba(168, 230, 46, 0.11);
   --cursor-ring: rgba(244, 239, 228, 0.54);
-  --cursor-ring-active: rgba(159, 189, 74, 0.82);
-  --cursor-active-fill: rgba(159, 189, 74, 0.08);
-  --cursor-dot: #9fbd4a;
-  --cursor-shadow: rgba(159, 189, 74, 0.22);
+  --cursor-ring-active: rgba(168, 230, 46, 0.94);
+  --cursor-active-fill: rgba(168, 230, 46, 0.07);
+  --cursor-dot: #a8e62e;
+  --cursor-shadow: rgba(168, 230, 46, 0.2);
 }
 
 @theme inline {
@@ -131,16 +131,16 @@ body {
   max-width: 100%;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 12% 8%, rgba(147, 182, 58, 0.075), transparent 29rem),
-    radial-gradient(circle at 88% 16%, rgba(102, 124, 35, 0.07), transparent 26rem),
+    radial-gradient(circle at 12% 8%, rgba(168, 230, 46, 0.045), transparent 29rem),
+    radial-gradient(circle at 88% 16%, rgba(111, 143, 24, 0.035), transparent 26rem),
     linear-gradient(135deg, var(--site-bg) 0%, var(--site-bg-soft) 100%);
   color: var(--site-text);
 }
 
 :root[data-theme="dark"] body {
   background:
-    radial-gradient(circle at 10% 8%, rgba(159, 189, 74, 0.07), transparent 31rem),
-    radial-gradient(circle at 92% 10%, rgba(159, 189, 74, 0.045), transparent 28rem),
+    radial-gradient(circle at 10% 8%, rgba(168, 230, 46, 0.045), transparent 31rem),
+    radial-gradient(circle at 92% 10%, rgba(168, 230, 46, 0.028), transparent 28rem),
     linear-gradient(135deg, #20231d 0%, #242b1d 48%, #1f231b 100%);
 }
 
@@ -194,14 +194,14 @@ canvas {
 .section-hero {
   background:
     radial-gradient(circle at 18% 16%, var(--site-accent-strong), transparent 25rem),
-    radial-gradient(circle at 92% 6%, rgba(147, 182, 58, 0.055), transparent 26rem),
+    radial-gradient(circle at 92% 6%, rgba(168, 230, 46, 0.035), transparent 26rem),
     linear-gradient(135deg, var(--section-hero-bg), var(--site-bg-soft));
 }
 
 :root[data-theme="dark"] .section-hero {
   background:
-    radial-gradient(circle at 16% 8%, rgba(159, 189, 74, 0.08), transparent 27rem),
-    radial-gradient(circle at 95% 12%, rgba(159, 189, 74, 0.045), transparent 24rem),
+    radial-gradient(circle at 16% 8%, rgba(168, 230, 46, 0.05), transparent 27rem),
+    radial-gradient(circle at 95% 12%, rgba(168, 230, 46, 0.028), transparent 24rem),
     linear-gradient(135deg, #20231d 0%, #252d1e 58%, #1f231b 100%);
 }
 
@@ -216,14 +216,14 @@ canvas {
   border-block: 1px solid var(--site-border);
   background:
     radial-gradient(circle at 14% 14%, var(--site-accent-soft), transparent 22rem),
-    radial-gradient(circle at 86% 84%, rgba(102, 124, 35, 0.055), transparent 26rem),
+    radial-gradient(circle at 86% 84%, rgba(111, 143, 24, 0.035), transparent 26rem),
     linear-gradient(135deg, var(--section-panel-bg), var(--site-bg));
 }
 
 :root[data-theme="dark"] .section-panel {
   background:
-    radial-gradient(circle at 14% 14%, rgba(159, 189, 74, 0.065), transparent 23rem),
-    radial-gradient(circle at 86% 84%, rgba(159, 189, 74, 0.04), transparent 27rem),
+    radial-gradient(circle at 14% 14%, rgba(168, 230, 46, 0.042), transparent 23rem),
+    radial-gradient(circle at 86% 84%, rgba(168, 230, 46, 0.026), transparent 27rem),
     linear-gradient(135deg, #252c1f, #20231d);
 }
 
@@ -239,14 +239,14 @@ canvas {
   overflow-x: clip;
   background:
     radial-gradient(circle at 18% 5%, var(--site-accent-strong), transparent 26rem),
-    radial-gradient(circle at 88% 28%, rgba(147, 182, 58, 0.06), transparent 24rem),
+    radial-gradient(circle at 88% 28%, rgba(168, 230, 46, 0.036), transparent 24rem),
     linear-gradient(160deg, var(--site-bg), var(--site-bg-soft));
 }
 
 :root[data-theme="dark"] .project-detail-shell {
   background:
-    radial-gradient(circle at 18% 5%, rgba(159, 189, 74, 0.08), transparent 27rem),
-    radial-gradient(circle at 88% 28%, rgba(159, 189, 74, 0.04), transparent 25rem),
+    radial-gradient(circle at 18% 5%, rgba(168, 230, 46, 0.05), transparent 27rem),
+    radial-gradient(circle at 88% 28%, rgba(168, 230, 46, 0.026), transparent 25rem),
     linear-gradient(160deg, #20231d, #27301f);
 }
 
@@ -263,7 +263,7 @@ canvas {
   overflow: hidden;
   border: 1px solid var(--site-border-strong);
   background:
-    linear-gradient(135deg, rgba(147, 182, 58, 0.28), transparent 34%),
+    linear-gradient(135deg, rgba(168, 230, 46, 0.12), transparent 34%),
     linear-gradient(180deg, var(--site-card-solid), var(--site-bg-soft));
 }
 
@@ -290,5 +290,5 @@ canvas {
 }
 
 .brand-accent-line {
-  background: linear-gradient(90deg, transparent, rgba(147, 182, 58, 0.72), transparent);
+  background: linear-gradient(90deg, transparent, rgba(168, 230, 46, 0.48), transparent);
 }
