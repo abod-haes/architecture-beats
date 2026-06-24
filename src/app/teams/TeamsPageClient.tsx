@@ -45,7 +45,7 @@ export default function TeamsPageClient() {
                 whileHover={{ y: -8, scale: 1.01 }}
                 className="group relative min-h-[560px] overflow-hidden border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] shadow-[0_18px_48px_var(--site-shadow)] transition hover:border-brand-primary"
               >
-                <Link href={`/teams/${member.slug}`} className="absolute inset-0 z-10" aria-label={member.name}>
+                <Link href={`/teams/${member.slug}`} className="absolute inset-0 z-30" aria-label={member.name}>
                   <span className="sr-only">{labels.viewProfile}</span>
                 </Link>
 
@@ -59,11 +59,11 @@ export default function TeamsPageClient() {
                   className="object-contain object-bottom px-4 pt-6 transition duration-700 group-hover:scale-[1.035] sm:px-7 sm:pt-8"
                 />
 
-                <div className="absolute start-4 top-4 z-20 grid h-12 w-12 place-items-center border border-brand-primary bg-[var(--site-card)] text-brand-dark shadow-[0_14px_34px_var(--site-shadow)] backdrop-blur transition group-hover:bg-brand-primary group-hover:text-[#232323]">
+                <div className="pointer-events-none absolute start-4 top-4 z-20 grid h-12 w-12 place-items-center border border-brand-primary bg-[var(--site-card)] text-brand-dark shadow-[0_14px_34px_var(--site-shadow)] backdrop-blur transition group-hover:bg-brand-primary group-hover:text-[#232323]">
                   <Icon className="h-6 w-6" />
                 </div>
 
-                <div className="absolute end-4 top-4 z-20 flex max-w-[70%] flex-wrap justify-end gap-2">
+                <div className="pointer-events-none absolute end-4 top-4 z-20 flex max-w-[70%] flex-wrap justify-end gap-2">
                   {member.badges.slice(0, 2).map((badge) => (
                     <span key={badge} className="border border-white/25 bg-black/30 px-2.5 py-1 text-[0.65rem] font-black text-white backdrop-blur">
                       {badge}
@@ -71,9 +71,9 @@ export default function TeamsPageClient() {
                   ))}
                 </div>
 
-                <div className="absolute inset-x-3 bottom-3 z-20 border border-white/20 bg-brand-primary/85 p-4 text-[#232323] shadow-[0_18px_45px_rgba(0,0,0,0.22)] backdrop-blur-xl transition group-hover:bg-brand-primary sm:inset-x-4 sm:bottom-4 sm:p-5">
+                <div className="pointer-events-none absolute inset-x-3 bottom-3 z-20 border border-white/20 bg-brand-primary/90 p-4 text-[#232323] shadow-[0_18px_45px_rgba(0,0,0,0.22)] backdrop-blur-xl transition group-hover:bg-brand-primary sm:inset-x-4 sm:bottom-4 sm:p-5">
                   <div className="mb-3 flex items-center justify-between gap-4">
-                    <span className="h-px w-16 bg-[#232323]/45" />
+                    <span className="h-px w-16 bg-[#232323]/40" />
                     <span className="inline-flex items-center gap-2 text-xs font-black text-[#33420f]">
                       <MapPin className="h-3.5 w-3.5" />
                       {member.location}
@@ -81,10 +81,10 @@ export default function TeamsPageClient() {
                   </div>
                   <h1 className="text-2xl font-black leading-tight">{member.name}</h1>
                   <p className="mt-1 text-sm font-black text-[#33420f]">{member.jobTitle}</p>
-                  <p className="mt-3 line-clamp-3 leading-7 text-[#232323]/82">{member.summary}</p>
+                  <p className="mt-3 line-clamp-3 leading-7 text-[#232323]/80">{member.summary}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {member.skills.slice(0, 3).map((skill) => (
-                      <span key={skill} className="border border-[#232323]/20 bg-white/18 px-2.5 py-1 text-xs font-black text-[#232323] backdrop-blur">
+                      <span key={skill} className="border border-[#232323]/20 bg-white/20 px-2.5 py-1 text-xs font-black text-[#232323] backdrop-blur">
                         {skill}
                       </span>
                     ))}
