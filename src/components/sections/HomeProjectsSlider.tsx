@@ -116,7 +116,7 @@ export default function HomeProjectsSlider() {
   return (
     <section id="projects" ref={sectionRef} className="site-section section-panel relative overflow-hidden py-16 sm:py-20" dir={dir}>
       <motion.div style={{ y }} className="blueprint-grid absolute inset-0 -z-10 opacity-45" />
-      <div className="mx-auto w-[92%] max-w-7xl">
+      <div className="mx-auto w-[92%] max-w-7xl min-w-0">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <SectionTitle title={content.texts.projectsTitle} description={content.texts.projectsDescription} eyebrow="Portfolio" />
           <Link
@@ -130,7 +130,7 @@ export default function HomeProjectsSlider() {
         </div>
 
         <div
-          className="relative mt-8 sm:mt-10"
+          className="slider-shell relative mt-8 sm:mt-10"
           onMouseEnter={() => {
             autoPausedRef.current = true;
           }}
@@ -149,7 +149,7 @@ export default function HomeProjectsSlider() {
             type="button"
             onClick={() => scrollSlider("prev")}
             data-cursor="active"
-            className="absolute left-0 top-1/2 z-20 inline-flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323] max-sm:left-3 max-sm:h-10 max-sm:w-10 max-sm:translate-x-0"
+            className="absolute left-2 top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323] sm:left-3 sm:h-11 sm:w-11"
             aria-label={labels.previous}
           >
             <ArrowLeft className="h-4 w-4" />
@@ -159,7 +159,7 @@ export default function HomeProjectsSlider() {
             type="button"
             onClick={() => scrollSlider("next")}
             data-cursor="active"
-            className="absolute right-0 top-1/2 z-20 inline-flex h-11 w-11 translate-x-1/2 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323] max-sm:right-3 max-sm:h-10 max-sm:w-10 max-sm:translate-x-0"
+            className="absolute right-2 top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323] sm:right-3 sm:h-11 sm:w-11"
             aria-label={labels.next}
           >
             <ArrowRight className="h-4 w-4" />
@@ -177,10 +177,10 @@ export default function HomeProjectsSlider() {
             onPointerUp={stopDrag}
             onPointerCancel={stopDrag}
             onClickCapture={handleSliderClick}
-            className="flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden scroll-smooth px-1 py-2 [scrollbar-width:none] sm:gap-5 sm:px-3 [&::-webkit-scrollbar]:hidden"
+            className="slider-scroll flex max-w-full snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden scroll-smooth px-14 py-2 sm:gap-5 sm:px-16"
           >
             {content.projects.map((project, index) => (
-              <div key={project.title} dir={dir} className="w-[86%] shrink-0 snap-start sm:w-[26rem] lg:w-[26rem]">
+              <div key={project.title} dir={dir} className="w-[82%] min-w-0 shrink-0 snap-start sm:w-[26rem] lg:w-[26rem]">
                 <ProjectCard
                   project={project}
                   labels={content.texts.projectLabels}
