@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, BriefcaseBusiness, Building2, CheckCircle2, Code2, HardHat, Mail, MapPin, PenTool, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, BriefcaseBusiness, Building2, CheckCircle2, Code2, HardHat, MapPin, PenTool } from "lucide-react";
 import { useLocale } from "@/context/LocaleContext";
-import { getTeamMember, teamLabels, type TeamMemberProfile, type TeamSlug } from "@/data/teamProfiles";
+import { getTeamMember, teamLabels, type TeamSlug } from "@/data/teamProfiles";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 const icons: Record<TeamSlug, typeof Building2> = {
@@ -30,56 +30,6 @@ function ListCard({ title, items }: { title: string; items: string[] }) {
         ))}
       </ul>
     </motion.div>
-  );
-}
-
-function CVBlock({ member, labels }: { member: TeamMemberProfile; labels: typeof teamLabels.ar }) {
-  return (
-    <motion.section variants={fadeUp} className="relative overflow-hidden border border-[var(--site-border-strong)] bg-[var(--site-card)] p-5 backdrop-blur sm:p-7">
-      <div className="pointer-events-none absolute -end-20 -top-20 h-48 w-48 rounded-full bg-[var(--site-accent-soft)] blur-3xl" />
-      <p className="relative text-xs font-black uppercase tracking-[0.24em] text-brand-secondary">CV</p>
-      <h2 className="relative mt-3 text-3xl font-black text-brand-dark">{labels.cv}</h2>
-      <div className="relative mt-5 border-y border-[var(--site-border)] py-5">
-        <p className="text-lg font-black text-brand-dark">{member.cv.headline}</p>
-        <p className="mt-3 leading-8 text-brand-gray">{member.cv.summary}</p>
-      </div>
-      <div className="relative mt-5 grid gap-5 lg:grid-cols-2">
-        <div>
-          <h3 className="font-black text-brand-dark">{labels.highlights}</h3>
-          <ul className="mt-3 space-y-2">
-            {member.cv.highlights.map((item) => (
-              <li key={item} className="flex gap-2 text-sm leading-7 text-brand-gray">
-                <Sparkles className="mt-1 h-4 w-4 shrink-0 text-brand-secondary" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="space-y-5">
-          {member.cv.languages?.length ? (
-            <div>
-              <h3 className="font-black text-brand-dark">{labels.languages}</h3>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {member.cv.languages.map((language) => (
-                  <span key={language} className="border border-[var(--site-border)] bg-[var(--site-muted)] px-3 py-1.5 text-sm font-bold text-brand-dark">
-                    {language}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ) : null}
-          {member.cv.contact ? (
-            <div>
-              <h3 className="font-black text-brand-dark">{labels.contact}</h3>
-              <a href={`mailto:${member.cv.contact}`} className="mt-3 inline-flex items-center gap-2 text-sm font-black text-brand-secondary transition hover:text-brand-dark">
-                <Mail className="h-4 w-4" />
-                {member.cv.contact}
-              </a>
-            </div>
-          ) : null}
-        </div>
-      </div>
-    </motion.section>
   );
 }
 
@@ -110,40 +60,36 @@ export default function TeamMemberPageClient({ slug }: { slug: string }) {
           {labels.backToTeam}
         </Link>
 
-        <motion.section initial="hidden" animate="visible" variants={staggerContainer} className="mt-8 grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <motion.div variants={fadeUp} className="site-card relative overflow-hidden p-4 sm:p-5">
-            <div className="pointer-events-none absolute -end-20 -top-20 h-48 w-48 rounded-full bg-[var(--site-accent-soft)] blur-3xl" />
-            <div className="relative overflow-hidden border border-[var(--site-border-strong)] bg-[var(--site-muted)]">
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 45vw, 92vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="absolute start-4 top-4 flex h-14 w-14 items-center justify-center border border-brand-primary bg-[var(--site-card)] text-brand-dark shadow-[0_14px_34px_var(--site-shadow)]">
-                <Icon className="h-7 w-7" />
-              </div>
+        <motion.section initial="hidden" animate="visible" variants={staggerContainer} className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
+          <motion.div variants={fadeUp} className="relative min-h-[560px] overflow-hidden border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] shadow-[0_18px_48px_var(--site-shadow)] sm:min-h-[680px]">
+            <div className="blueprint-grid absolute inset-0 opacity-35" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_12%,rgba(166,214,50,0.24),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.12),rgba(0,0,0,0.22))]" />
+            <Image
+              src={member.image}
+              alt={member.name}
+              fill
+              priority
+              sizes="(min-width: 1024px) 45vw, 92vw"
+              className="object-contain object-bottom px-5 pt-8 sm:px-10 sm:pt-10"
+            />
+            <div className="absolute start-4 top-4 z-10 flex h-14 w-14 items-center justify-center border border-brand-primary bg-[var(--site-card)] text-brand-dark shadow-[0_14px_34px_var(--site-shadow)] backdrop-blur">
+              <Icon className="h-7 w-7" />
             </div>
-
-            <div className="relative mt-7 px-1 pb-2 sm:px-3">
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-brand-secondary">{member.position}</p>
-              <h1 className="mt-3 text-4xl font-black leading-tight text-brand-dark sm:text-5xl">{member.name}</h1>
-              <p className="mt-3 text-lg font-black text-brand-secondary">{member.jobTitle}</p>
-              <p className="mt-4 flex items-center gap-2 text-brand-gray">
-                <MapPin className="h-4 w-4 text-brand-secondary" />
+            <div className="absolute inset-x-4 bottom-4 z-10 border border-white/20 bg-brand-primary/85 p-5 text-[#232323] shadow-[0_18px_45px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:inset-x-6 sm:bottom-6 sm:p-6">
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#33420f]">{member.position}</p>
+              <h1 className="mt-3 text-4xl font-black leading-tight sm:text-5xl">{member.name}</h1>
+              <p className="mt-3 text-lg font-black text-[#33420f]">{member.jobTitle}</p>
+              <p className="mt-4 flex items-center gap-2 text-[#232323]/82">
+                <MapPin className="h-4 w-4 text-[#33420f]" />
                 {member.location}
               </p>
-            </div>
-            <div className="relative mt-5 flex flex-wrap gap-2 px-1 pb-2 sm:px-3">
-              {member.badges.map((badge) => (
-                <span key={badge} className="border border-brand-primary/40 bg-[var(--site-accent-soft)] px-3 py-1.5 text-xs font-black text-brand-dark">
-                  {badge}
-                </span>
-              ))}
+              <div className="mt-5 flex flex-wrap gap-2">
+                {member.badges.map((badge) => (
+                  <span key={badge} className="border border-[#232323]/20 bg-white/18 px-3 py-1.5 text-xs font-black text-[#232323] backdrop-blur">
+                    {badge}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
 
@@ -171,10 +117,6 @@ export default function TeamMemberPageClient({ slug }: { slug: string }) {
           <ListCard title={labels.responsibilities} items={member.responsibilities} />
           <ListCard title={labels.experience} items={member.experience} />
         </motion.section>
-
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.18 }} variants={staggerContainer} className="mt-10">
-          <CVBlock member={member} labels={labels} />
-        </motion.div>
       </div>
     </main>
   );
