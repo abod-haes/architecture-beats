@@ -119,6 +119,12 @@ html {
   background: var(--site-bg);
 }
 
+@media (max-width: 640px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
 body {
   width: 100%;
   min-width: 0;
