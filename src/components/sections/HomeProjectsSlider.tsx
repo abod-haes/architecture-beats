@@ -129,8 +129,20 @@ export default function HomeProjectsSlider() {
           </Link>
         </div>
 
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.12 }} variants={staggerContainer} className="mt-8 grid gap-4 sm:hidden">
+          {content.projects.slice(0, 4).map((project, index) => (
+            <ProjectCard
+              key={project.title}
+              project={project}
+              labels={content.texts.projectLabels}
+              slug={projectSlugs[index]}
+              detailsLabel={projectDetailLabels[locale].detailsCta}
+            />
+          ))}
+        </motion.div>
+
         <div
-          className="slider-shell relative mt-8 sm:mt-10"
+          className="slider-shell relative mt-10 hidden sm:block"
           onMouseEnter={() => {
             autoPausedRef.current = true;
           }}
@@ -149,7 +161,7 @@ export default function HomeProjectsSlider() {
             type="button"
             onClick={() => scrollSlider("prev")}
             data-cursor="active"
-            className="absolute left-2 top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323] sm:left-3 sm:h-11 sm:w-11"
+            className="absolute left-3 top-1/2 z-20 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323]"
             aria-label={labels.previous}
           >
             <ArrowLeft className="h-4 w-4" />
@@ -159,7 +171,7 @@ export default function HomeProjectsSlider() {
             type="button"
             onClick={() => scrollSlider("next")}
             data-cursor="active"
-            className="absolute right-2 top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323] sm:right-3 sm:h-11 sm:w-11"
+            className="absolute right-3 top-1/2 z-20 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-[var(--site-border-strong)] bg-[var(--site-card-solid)] text-brand-dark shadow-[0_18px_44px_var(--site-shadow)] backdrop-blur transition hover:border-brand-primary hover:bg-brand-primary hover:text-[#232323]"
             aria-label={labels.next}
           >
             <ArrowRight className="h-4 w-4" />
@@ -177,10 +189,10 @@ export default function HomeProjectsSlider() {
             onPointerUp={stopDrag}
             onPointerCancel={stopDrag}
             onClickCapture={handleSliderClick}
-            className="slider-scroll flex max-w-full snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden scroll-smooth px-14 py-2 select-none cursor-grab active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-5 sm:px-16"
+            className="slider-scroll flex max-w-full snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-hidden scroll-smooth px-16 py-2 select-none cursor-grab active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {content.projects.map((project, index) => (
-              <div key={project.title} dir={dir} className="w-[82%] min-w-0 shrink-0 snap-start sm:w-[26rem] lg:w-[26rem]">
+              <div key={project.title} dir={dir} className="w-[26rem] min-w-0 shrink-0 snap-start lg:w-[26rem]">
                 <ProjectCard
                   project={project}
                   labels={content.texts.projectLabels}
