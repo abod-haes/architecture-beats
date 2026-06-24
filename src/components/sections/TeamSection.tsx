@@ -67,7 +67,7 @@ export default function TeamSection() {
                   alt={member.name}
                   fill
                   sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 92vw"
-                  className="object-contain object-bottom px-4 pt-5 transition duration-700 group-hover:scale-[1.035] sm:px-6 sm:pt-7"
+                  className="object-cover object-top  transition duration-700 group-hover:scale-[1.035] "
                 />
 
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[64%] bg-gradient-to-t from-[#080a05]/90 via-[#080a05]/42 to-transparent transition duration-500 group-hover:h-[70%]" />

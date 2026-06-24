@@ -56,7 +56,7 @@ export default function TeamsPageClient() {
                   alt={member.name}
                   fill
                   sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 92vw"
-                  className="object-contain object-bottom px-4 pt-6 transition duration-700 group-hover:scale-[1.035] sm:px-7 sm:pt-8"
+                  className="object-cover object-top  transition duration-700 group-hover:scale-[1.035]"
                 />
 
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[68%] bg-gradient-to-t from-[#080a05]/92 via-[#080a05]/46 to-transparent transition duration-500 group-hover:h-[74%]" />
@@ -66,13 +66,6 @@ export default function TeamsPageClient() {
                   <Icon className="h-6 w-6" />
                 </div>
 
-                <div className="pointer-events-none absolute end-4 top-4 z-20 flex max-w-[70%] flex-wrap justify-end gap-2">
-                  {member.badges.slice(0, 2).map((badge) => (
-                    <span key={badge} className="border border-white/25 bg-black/25 px-2.5 py-1 text-[0.65rem] font-black text-white shadow-lg backdrop-blur-md">
-                      {badge}
-                    </span>
-                  ))}
-                </div>
 
                 <div className="pointer-events-none absolute inset-x-3 bottom-3 z-20 border border-white/15 bg-white/10 p-4 text-white shadow-[0_-20px_70px_rgba(0,0,0,0.46)] backdrop-blur-xl transition group-hover:border-brand-primary/45 group-hover:bg-white/14 sm:inset-x-4 sm:bottom-4 sm:p-5">
                   <div className="mb-3 flex items-center justify-between gap-4">
